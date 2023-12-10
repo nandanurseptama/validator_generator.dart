@@ -1,0 +1,21 @@
+name: validator_annotation_example_dart
+description: A sample command-line application.
+version: 1.0.0
+publish_to: none
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.1.0
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+  validator_annotation:
+    path: ../validator_annotation
+
+dev_dependencies:
+  build_runner: ^2.4.7
+  lints: ^2.0.0
+  test: ^1.21.0
+  validator_annotation_generator:
+    path: ../validator_annotation_generator

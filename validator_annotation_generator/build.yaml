@@ -1,0 +1,9 @@
+# Read about `build.yaml` at https://pub.dev/packages/build_config
+builders:
+  validator_metadata_generator:
+    import: "package:validator_annotation_generator/builder.dart"
+    builder_factories: ["validatorMetadataGenerator"]
+    build_extensions: {".dart": [".validator_metadata_generator.validator.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]
