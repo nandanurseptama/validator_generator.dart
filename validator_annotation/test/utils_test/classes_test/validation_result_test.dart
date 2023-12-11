@@ -10,25 +10,25 @@ void main() {
   setUpAll(() {
     expectedValidationErrors = [
       ValidationError(
-        fieldName: "username",
-        originalValue: "",
-        errorMessage: "cannot be empty",
+        fieldName: 'username',
+        originalValue: '',
+        errorMessage: 'cannot be empty',
       ),
     ];
 
     expectedValidationDatas = [
-      ValidationData(
+      const ValidationData(
         instanceMemberSymbol: 'username',
-        valueToValidate: "",
+        valueToValidate: '',
         annotations: [
           IsNotEmptyStringValidator(
-            fieldName: "username",
+            fieldName: 'username',
           ),
         ],
       ),
     ];
 
-    expectedValidatorOptions = ValidatorOptions(
+    expectedValidatorOptions = const ValidatorOptions(
       stopWhenFirstError: true,
     );
 
@@ -39,8 +39,8 @@ void main() {
     );
   });
 
-  group("ValidationResult", () {
-    test("constructor should run without any error", () {
+  group('ValidationResult', () {
+    test('constructor should run without any error', () {
       expect(
         () => ValidationResult(
           errors: expectedValidationErrors,
@@ -51,7 +51,7 @@ void main() {
       );
     });
 
-    test("all properties value should match with expected value", () {
+    test('all properties value should match with expected value', () {
       expect(
         validationResultToTest.errors,
         expectedValidationErrors,
@@ -60,10 +60,6 @@ void main() {
         validationResultToTest.validationData,
         expectedValidationDatas,
       );
-      expect(
-        validationResultToTest.validatorOptions,
-        expectedValidatorOptions,
-      );
 
       expect(
         validationResultToTest.firstError,
@@ -71,7 +67,7 @@ void main() {
       );
       expect(
         validationResultToTest.firstErrorToString,
-        "${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}",
+        '${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}',
       );
       expect(
         validationResultToTest.isError,
@@ -79,20 +75,16 @@ void main() {
       );
     });
 
-    test("when function", () {
+    test('when function', () {
       expect(
         validationResultToTest.when(
-          error: (result) {
-            return result.firstErrorToString;
-          },
-          noError: (result) {
-            return "";
-          },
+          error: (result) => result.firstErrorToString,
+          noError: (result) => '',
         ),
-        "${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}",
+        '${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}',
       );
 
-      var validationResultWithoutError = ValidationResult(
+      var validationResultWithoutError = const ValidationResult(
         errors: [],
         validatorOptions: ValidatorOptions(),
         validationData: [],
@@ -111,43 +103,35 @@ void main() {
       );
       expect(
         validationResultWithoutError.when(
-          error: (result) {
-            return result.firstErrorToString;
-          },
-          noError: (result) {
-            return "";
-          },
+          error: (result) => result.firstErrorToString,
+          noError: (result) => '',
         ),
-        "",
+        '',
       );
 
       expect(
         () => validationResultWithoutError.when(
-          error: (result) {
-            return result.firstErrorToString;
-          },
-          noError: (result) {
-            return result.firstErrorToString;
-          },
+          error: (result) => result.firstErrorToString,
+          noError: (result) => result.firstErrorToString,
         ),
         throwsA(isA<Exception>()),
       );
     });
 
     test(
-        "two validation result instances with difference property values, should not match",
+        'two validation result instances with difference property values, should not match',
         () {
       var validationResultMatcher = ValidationResult(
         errors: [
           ValidationError(
-            fieldName: "child",
+            fieldName: 'child',
             originalValue: -1,
-            errorMessage: "must higher than or equal to 0",
+            errorMessage: 'must higher than or equal to 0',
           )
         ],
-        validatorOptions: ValidatorOptions(),
+        validatorOptions: const ValidatorOptions(),
         validationData: [
-          ValidationData(
+          const ValidationData(
             instanceMemberSymbol: 'child',
             valueToValidate: -1,
             annotations: [

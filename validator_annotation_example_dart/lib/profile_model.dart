@@ -1,6 +1,6 @@
 import 'package:validator_annotation/validator_annotation.dart';
 import 'package:validator_annotation_example_dart/base_model.dart';
-
+part 'profile_model.validator.dart';
 @ClassValidator()
 class ProfileModel extends BaseModel {
   @IsNotEmptyStringValidator()
@@ -14,3 +14,7 @@ class ProfileModel extends BaseModel {
     required this.fullName,
   });
 }
+
+
+@ClassValidator()
+const variable = 2;

@@ -1,7 +1,5 @@
 // ignore_for_file: strict_raw_type
 
-import 'dart:async';
-
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 import 'src/validator_model_generator.dart';

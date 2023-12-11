@@ -42,8 +42,8 @@ String createStaticFunctionValidatorFromInstance({
     final validationDatas = $validationDationDataString
     
     // validator options
-    final options = ${config.validatorOptions.toDartString};
-    return validateInstance(validationDatas, options);
+    final stopWhenFirstError = ${config.stopWhenFirstError};
+    return validateInstance(validationDatas, stopWhenFirstError:stopWhenFirstError,);
   }
   ''';
 }

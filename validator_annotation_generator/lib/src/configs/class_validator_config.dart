@@ -1,32 +1,27 @@
 import 'package:analyzer/dart/constant/value.dart';
 import 'package:validator_annotation/validator_annotation.dart';
 
-import 'validator_options_config.dart';
-
 /// Represents values from [ClassValidator] when merged with local
 /// configuration.
 ///
 /// Values are all known, so types are non-nullable.
 class ClassValidatorConfig {
-  final ValidatorOptionsConfig validatorOptions;
+  final bool stopWhenFirstError;
 
   const ClassValidatorConfig({
-    required this.validatorOptions,
+    required this.stopWhenFirstError,
   });
 
   // NEED To update when ClassValidator changed
   static const defaults = ClassValidatorConfig(
-    validatorOptions: ValidatorOptionsConfig.defaults,
+    stopWhenFirstError: true,
   );
 
   factory ClassValidatorConfig.fromDartObject(DartObject dartObject) {
-    final validatorOptionsObject = dartObject.getField('validatorOptions');
+    final stopWhenFirstError =
+        dartObject.getField('stopWhenFirstError')?.toBoolValue() ?? true;
     return ClassValidatorConfig(
-      validatorOptions: validatorOptionsObject == null
-          ? ValidatorOptionsConfig.defaults
-          : ValidatorOptionsConfig.fromDartObject(
-              validatorOptionsObject,
-            ),
+      stopWhenFirstError: stopWhenFirstError,
     );
   }
 }

@@ -1,10 +1,9 @@
-import 'package:validator_annotation/validator_annotation.dart';
+import '../../validator_annotation.dart';
 
 ValidationResult validateInstance(
-  List<ValidationData> validationDatas,
-  ValidatorOptions options,
-) {
-  final stopFirstError = options.stopWhenFirstError;
+  List<ValidationData> validationDatas, {
+  bool stopWhenFirstError = true,
+}) {
   final validationErrors = List<ValidationError>.empty(
     growable: true,
   );
@@ -12,7 +11,7 @@ ValidationResult validateInstance(
     final valueToValidate = validationData.valueToValidate;
     for (final validationMetadata in validationData.annotations) {
       final isError = validationMetadata.validate(valueToValidate);
-      if (isError && stopFirstError) {
+      if (isError && stopWhenFirstError) {
         final validationError = ValidationError(
           fieldName: validationMetadata.fieldName ??
               validationData.instanceMemberSymbol,
@@ -23,7 +22,6 @@ ValidationResult validateInstance(
           errors: [
             validationError,
           ],
-          validatorOptions: options,
           validationData: validationDatas,
         );
       }
@@ -42,7 +40,6 @@ ValidationResult validateInstance(
   }
   return ValidationResult(
     errors: validationErrors,
-    validatorOptions: options,
     validationData: validationDatas,
   );
 }

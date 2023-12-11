@@ -1,11 +1,12 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
+import 'package:source_gen_test/source_gen_test.dart';
+import 'package:validator_annotation/validator_annotation.dart';
 
-part of 'user_model.dart';
+@ShouldThrow('`@ClassValidator` can only be used on classes.')
+@ClassValidator()
+const topLevelVariabel = 2;
 
-// **************************************************************************
-// ValidatorModelGenerator
-// **************************************************************************
-
+@ShouldGenerate(
+  '''
 class UserModelValidator {
   static String? validateEmail(String value) {
     final validatorAnnotations = [
@@ -51,4 +52,25 @@ class UserModelValidator {
       stopWhenFirstError: stopWhenFirstError,
     );
   }
+}
+''',
+)
+@ClassValidator(
+  stopWhenFirstError: false,
+)
+class UserModel {
+  @IsNotEmptyStringValidator()
+  @IsEmailValidator(
+    fieldName: 'email',
+    errorMessage: 'is not email',
+  )
+  final String email;
+
+  @IsNotEmptyStringValidator()
+  final String password;
+
+  const UserModel({
+    required this.email,
+    required this.password,
+  });
 }

@@ -14,46 +14,44 @@ class ValidatorModelGenerator extends GeneratorForAnnotation<ClassValidator> {
     ConstantReader annotation,
     BuildStep buildStep,
   ) {
-    try {
-      final elementName = element.name;
-
-      if (elementName == null) {
-        return null;
-      }
-      final validatorModelElementVisitor = ValidatorModelFieldElementVisitor();
-      final classValidatorConfig = ClassValidatorConfig.fromDartObject(
-        annotation.objectValue,
+    if (element is! ClassElement) {
+      throw InvalidGenerationSourceError(
+        '`@ClassValidator` can only be used on classes.',
+        element: element,
       );
+    }
 
-      element.visitChildren(
-        validatorModelElementVisitor,
-      );
-      final fieldsWithAnnotations =
-          validatorModelElementVisitor.fieldsWithAnnotations;
-      if (fieldsWithAnnotations.isEmpty) {
-        return null;
-      }
-      final fieldsValidationSource =
-          validatorModelElementVisitor.generateAllFieldsValidatorFunction();
+    final elementName = element.name;
 
-      if (fieldsValidationSource == null) {
-        return null;
-      }
-      final validatorInstanceSources =
-          createStaticFunctionValidatorFromInstance(
-        modelName: elementName,
-        fields: fieldsWithAnnotations,
-        config: classValidatorConfig,
-      );
-      return '''
+    final validatorModelElementVisitor = ValidatorModelFieldElementVisitor();
+    final classValidatorConfig = ClassValidatorConfig.fromDartObject(
+      annotation.objectValue,
+    );
+
+    element.visitChildren(
+      validatorModelElementVisitor,
+    );
+    final fieldsWithAnnotations =
+        validatorModelElementVisitor.fieldsWithAnnotations;
+    if (fieldsWithAnnotations.isEmpty) {
+      return null;
+    }
+    final fieldsValidationSource =
+        validatorModelElementVisitor.generateAllFieldsValidatorFunction();
+
+    if (fieldsValidationSource == null) {
+      return null;
+    }
+    final validatorInstanceSources = createStaticFunctionValidatorFromInstance(
+      modelName: elementName,
+      fields: fieldsWithAnnotations,
+      config: classValidatorConfig,
+    );
+    return '''
       class ${elementName}Validator{
         $fieldsValidationSource
         $validatorInstanceSources
       }
     ''';
-    } catch (error) {
-      log.info('failed : ${error.toString()}');
-      return null;
-    }
   }
 }

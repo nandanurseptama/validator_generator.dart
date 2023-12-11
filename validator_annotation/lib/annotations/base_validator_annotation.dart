@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:meta/meta_meta.dart';
 
 /// Create [ValidatorAnnotation]
@@ -8,10 +7,9 @@ import 'package:meta/meta_meta.dart';
 /// implements this class to create new decorator
 
 @Target({
-  TargetKind.getter,
   TargetKind.field,
 })
-abstract class ValidatorAnnotation extends Equatable {
+abstract class ValidatorAnnotation {
   /// decorator name
   final String name;
 
@@ -20,7 +18,8 @@ abstract class ValidatorAnnotation extends Equatable {
   /// when [fieldName] value null, it will take property name
   final String? fieldName;
 
-  /// when [errorMessage] value is null, it will take error message from [defaultErrorMessage]
+  /// when [errorMessage] value is null,
+  /// it will take error message from [defaultErrorMessage]
   final String? _errorMessage;
 
   const ValidatorAnnotation({
@@ -28,13 +27,6 @@ abstract class ValidatorAnnotation extends Equatable {
     this.fieldName,
     String? errorMessage,
   }) : _errorMessage = errorMessage;
-
-  @override
-  List<Object?> get props => [
-        name,
-        fieldName,
-        _errorMessage,
-      ];
 
   /// implement this function to validate [value]
   ///

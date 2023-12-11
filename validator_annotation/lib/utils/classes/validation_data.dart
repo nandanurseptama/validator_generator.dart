@@ -1,5 +1,5 @@
-import 'package:validator_annotation/annotations/annotations.dart';
 import 'package:equatable/equatable.dart';
+import '../../annotations/annotations.dart';
 
 /// Represents data used for validation, including the value to be validated
 /// and a list of validator annotation.

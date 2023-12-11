@@ -14,15 +14,14 @@ ElementAnnotation? getElementAnnotationFromElement({
       continue;
     }
 
-    
     final enclosingElement = metadataElement.enclosingElement;
-    if(enclosingElement == null){
+    if (enclosingElement == null) {
       continue;
     }
 
-    final isEnclosingElementClassValidatorType = TypeChecker.fromRuntime(type)
-        .isExactly(enclosingElement);
-    if(!isEnclosingElementClassValidatorType){
+    final isEnclosingElementClassValidatorType =
+        TypeChecker.fromRuntime(type).isExactly(enclosingElement);
+    if (!isEnclosingElementClassValidatorType) {
       continue;
     }
     // final metadataEnclosingElement = metadataElement.enclosingElement;

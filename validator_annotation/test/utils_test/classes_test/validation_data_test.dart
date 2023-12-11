@@ -44,7 +44,8 @@ void main() {
         expectedValidatorMetadatas,
       );
 
-      expect(validationDataToTest.annotations, isA<List<ValidatorAnnotation>>());
+      expect(
+          validationDataToTest.annotations, isA<List<ValidatorAnnotation>>());
 
       expect(
         validationDataToTest.annotations,

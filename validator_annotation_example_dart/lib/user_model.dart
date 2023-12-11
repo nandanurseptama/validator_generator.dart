@@ -5,9 +5,7 @@ part 'user_model.validator.dart';
 
 @Deprecated("ok")
 @ClassValidator(
-  validatorOptions: ValidatorOptions(
-    stopWhenFirstError: true,
-  ),
+  stopWhenFirstError: false,
 )
 class UserModel extends BaseModel {
   @IsNotEmptyStringValidator()

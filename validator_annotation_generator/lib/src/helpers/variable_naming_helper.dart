@@ -19,3 +19,4 @@ String createStaticFunctionNameFromFieldName(String fieldName) {
 
   return 'validate$fieldName';
 }
+ 

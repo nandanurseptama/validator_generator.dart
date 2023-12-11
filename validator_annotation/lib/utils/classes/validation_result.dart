@@ -1,7 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:validator_annotation/utils/classes/validation_data.dart';
-import 'package:validator_annotation/utils/classes/validation_error.dart';
-import 'package:validator_annotation/utils/classes/validator_options.dart';
+import '../utils.dart';
 
 /// A holder class to hold validation result
 ///
@@ -10,7 +7,7 @@ import 'package:validator_annotation/utils/classes/validator_options.dart';
 /// key of [MapEntry] is fieldName
 ///
 /// value of [MapEntry] is errorMessage
-class ValidationResult extends Equatable implements Exception {
+class ValidationResult implements Exception {
   /// list of error in [MapEntry]
   ///
   /// key of [MapEntry] is fieldName
@@ -19,8 +16,6 @@ class ValidationResult extends Equatable implements Exception {
   final List<ValidationError> errors;
 
   final List<ValidationData> validationData;
-
-  final ValidatorOptions validatorOptions;
 
   /// will true when errors is not empty
   bool get isError => errors.isNotEmpty;
@@ -32,9 +27,9 @@ class ValidationResult extends Equatable implements Exception {
   /// if there any error occured, will throw [Exception]
   String get firstErrorToString {
     if (!isError) {
-      throw Exception("There is no error");
+      throw Exception('There is no error');
     }
-    return "${firstError.fieldName} : ${firstError.errorMessage}";
+    return '${firstError.fieldName} : ${firstError.errorMessage}';
   }
 
   /// get first error in [String]
@@ -42,7 +37,7 @@ class ValidationResult extends Equatable implements Exception {
   /// if there any error occured, will throw [Exception]
   ValidationError get firstError {
     if (!isError) {
-      throw Exception("There is no error");
+      throw Exception('There is no error');
     }
     return errors.first;
   }
@@ -62,14 +57,6 @@ class ValidationResult extends Equatable implements Exception {
 
   const ValidationResult({
     required this.errors,
-    required this.validatorOptions,
     required this.validationData,
   }) : super();
-
-  @override
-  List<Object?> get props => [
-        errors,
-        validationData,
-        validatorOptions,
-      ];
 }

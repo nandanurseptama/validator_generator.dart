@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_type_check, no_leading_underscores_for_local_identifiers
+// ignore_for_file: unnecessary_type_check
 
 import 'package:test/test.dart';
 import 'package:validator_annotation/annotations/annotations.dart';
@@ -8,66 +8,64 @@ class _ValidatorMetadata extends ValidatorAnnotation {
     super.fieldName,
     super.errorMessage,
   }) : super(
-          name: "_ValidatorMetadata",
+          name: '_ValidatorMetadata',
         );
 
   @override
-  String get defaultErrorMessage => "defaultErrorMessage";
+  String get defaultErrorMessage => 'defaultErrorMessage';
 
   @override
-  bool validate(value) {
-    return true;
-  }
+  bool validate(dynamic value) => true;
 }
 
 void main() {
-  late _ValidatorMetadata _validatorMetadataToTest;
-  final String expectedFieldName = "userName";
-  final String expectedDefaultErrorMessage = "defaultErrorMessage";
-  final String expectedErrorMessage = "its validator metadata";
-  final String expectedValidatorName = "_ValidatorMetadata";
+  late _ValidatorMetadata validatorMetadataToTest;
+  const expectedFieldName = 'userName';
+  const expectedDefaultErrorMessage = 'defaultErrorMessage';
+  const expectedErrorMessage = 'its validator metadata';
+  const expectedValidatorName = '_ValidatorMetadata';
 
   setUpAll(() {
-    _validatorMetadataToTest = _ValidatorMetadata(
+    validatorMetadataToTest = _ValidatorMetadata(
       fieldName: expectedFieldName,
       errorMessage: expectedErrorMessage,
     );
   });
 
-  group("ValidatorMetadata Test", () {
-    test("_ValidatorMetadata should be instance of ValidatorMetadata", () {
+  group('ValidatorMetadata Test', () {
+    test('_ValidatorMetadata should be instance of ValidatorMetadata', () {
       expect(
-        _validatorMetadataToTest is ValidatorAnnotation,
+        validatorMetadataToTest is ValidatorAnnotation,
         isTrue,
       );
     });
 
-    test("_ValidatorMetadata should be have expected validatorName", () {
+    test('_ValidatorMetadata should be have expected validatorName', () {
       expect(
-        _validatorMetadataToTest.name,
+        validatorMetadataToTest.name,
         expectedValidatorName,
       );
     });
 
-    test("_ValidatorMetadata should be have expected fieldName", () {
+    test('_ValidatorMetadata should be have expected fieldName', () {
       expect(
-        _validatorMetadataToTest.fieldName,
+        validatorMetadataToTest.fieldName,
         expectedFieldName,
       );
     });
 
-    test("_ValidatorMetadata should be have expected errorMessage", () {
+    test('_ValidatorMetadata should be have expected errorMessage', () {
       expect(
-        _validatorMetadataToTest.errorMessage,
+        validatorMetadataToTest.errorMessage,
         expectedErrorMessage,
       );
     });
 
     test(
-        "_ValidatorMetadata validate function should implements validate function",
+        '_ValidatorMetadata validate function should implements validate function',
         () {
       expect(
-        () => _validatorMetadataToTest.validate(
+        () => validatorMetadataToTest.validate(
           null,
         ),
         returnsNormally,
@@ -75,46 +73,31 @@ void main() {
     });
 
     test(
-        "_ValidatorMetadata defaultErrorMessage should same with expectedDefaultErrorMessage ",
+        '_ValidatorMetadata defaultErrorMessage should same with expectedDefaultErrorMessage ',
         () {
       expect(
-        _validatorMetadataToTest.defaultErrorMessage,
+        validatorMetadataToTest.defaultErrorMessage,
         expectedDefaultErrorMessage,
       );
     });
 
     test(
-        "when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage",
+        'when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage',
         () {
-      var _validatorMetadataWithoutErrorMessage = _ValidatorMetadata();
+      final validatorMetadataWithoutErrorMessage = _ValidatorMetadata();
       expect(
-        _validatorMetadataWithoutErrorMessage.errorMessage,
+        validatorMetadataWithoutErrorMessage.errorMessage,
         expectedDefaultErrorMessage,
       );
     });
 
     test(
-        "when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage",
+        'when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage',
         () {
-      var _validatorMetadataWithoutErrorMessage = _ValidatorMetadata();
+      final validatorMetadataWithoutErrorMessage = _ValidatorMetadata();
       expect(
-        _validatorMetadataWithoutErrorMessage.fieldName,
+        validatorMetadataWithoutErrorMessage.fieldName,
         isNull,
-      );
-    });
-
-    test(
-        "when 2 instances of validator metadata have difference properties, should not match",
-        () {
-      var _validatorMetadataWithoutErrorMessage = _ValidatorMetadata();
-      expect(
-        _validatorMetadataToTest == _validatorMetadataWithoutErrorMessage,
-        isFalse,
-      );
-      expect(
-        _validatorMetadataToTest.props ==
-            _validatorMetadataWithoutErrorMessage.props,
-        isFalse,
       );
     });
   });
