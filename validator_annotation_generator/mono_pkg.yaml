@@ -4,7 +4,7 @@ sdk:
 - dev
 
 stages:
-- analyzer_and_format:
+- analyzer_format:
   - group:
     - format
     - analyze: --fatal-infos .

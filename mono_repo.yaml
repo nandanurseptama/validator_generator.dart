@@ -5,7 +5,7 @@ github:
   on:
     push:
       branches:
-        - test_ci
+        - master
     pull_request:
     schedule:
      - cron: "0 0 * * 0"
