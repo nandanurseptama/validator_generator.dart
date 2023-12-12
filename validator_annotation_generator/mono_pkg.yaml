@@ -6,6 +6,8 @@ sdk:
 stages:
 - analyze_format:
   - analyze: --fatal-infos .
+    sdk:
+    - pubspec
   - format:
     sdk:
     - dev
