@@ -6,7 +6,7 @@ import '../metadata_test_helper.dart';
 void main() {
   const expectedFieldName = 'salary';
   const expectedErrorMessage = 'salary must be number';
-  const  instanceToTest = IsStringNumberValidator(
+  const instanceToTest = IsStringNumberValidator(
     fieldName: expectedFieldName,
     errorMessage: expectedErrorMessage,
   );

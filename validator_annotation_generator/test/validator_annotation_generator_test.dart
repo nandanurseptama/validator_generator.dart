@@ -1,9 +1,11 @@
+@TestOn('vm')
+library test;
+
 import 'package:path/path.dart' as p;
 import 'package:source_gen_test/source_gen_test.dart';
 import 'package:test/test.dart';
 import 'package:validator_annotation_generator/src/validator_model_generator.dart';
 
-@TestOn('vm')
 void main() async {
   final validatorAnnotationGeneratorReader =
       await initializeLibraryReaderForDirectory(
@@ -11,7 +13,7 @@ void main() async {
       'test',
       'src',
     ),
-    'test_input.dart',
+    '_test_input.dart',
   );
   initializeBuildLogTracking();
 
