@@ -10,7 +10,8 @@ ValidationResult validateInstance(
   for (final validationData in validationDatas) {
     final valueToValidate = validationData.valueToValidate;
     for (final validationMetadata in validationData.annotations) {
-      final isError = validationMetadata.validate(valueToValidate);
+      final error = validationMetadata.validate(valueToValidate);
+      final isError = error != null;
       if (isError && stopWhenFirstError) {
         final validationError = ValidationError(
           fieldName: validationMetadata.fieldName ??

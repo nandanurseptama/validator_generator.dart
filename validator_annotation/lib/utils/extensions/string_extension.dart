@@ -1,5 +1,3 @@
 extension StringExtension on String {
-  String removeWhiteSpace() {
-    return replaceAll(RegExp(r'[ \t]+'), '');
-  }
+  String removeWhiteSpace() => replaceAll(RegExp(r'[ \t]+'), '');
 }

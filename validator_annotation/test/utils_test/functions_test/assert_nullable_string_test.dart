@@ -8,20 +8,20 @@ void main() {
 
   test('assertNullableString should not throw exception for nullable String',
       () {
-    expect(() => assertNullableString(value: null, allowNullable: true),
-        returnsNormally);
-    expect(() => assertNullableString(value: 'test', allowNullable: true),
-        returnsNormally);
+    expect(() => assertNullableString(allowNullable: true), returnsNormally);
+    expect(
+      () => assertNullableString(value: 'test', allowNullable: true),
+      returnsNormally,
+    );
   });
 
   test(
-      'assertNullableString should throw exception for nullable string when allowNullable is false',
+      '''assertNullableString should throw exception for nullable string when allowNullable is false''',
       () {
     expect(
-        () => assertNullableString(
-              value: null,
-            ),
-        throwsA(isA<Exception>()));
+      assertNullableString,
+      throwsA(isA<Exception>()),
+    );
   });
 
   test('assertNullableString should throw exception for non-String types', () {

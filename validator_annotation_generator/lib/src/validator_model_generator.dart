@@ -34,13 +34,21 @@ class ValidatorModelGenerator extends GeneratorForAnnotation<ClassValidator> {
     final fieldsWithAnnotations =
         validatorModelElementVisitor.fieldsWithAnnotations;
     if (fieldsWithAnnotations.isEmpty) {
-      return null;
+      throw InvalidGenerationSourceError(
+        '''`@ClassValidator` there are no field that annotated with `@ValidatorAnnotation`''',
+        element: element,
+      );
     }
     final fieldsValidationSource =
-        validatorModelElementVisitor.generateAllFieldsValidatorFunction();
+        validatorModelElementVisitor.generateAllFieldsValidatorFunction(
+      classValidatorConfig,
+    );
 
     if (fieldsValidationSource == null) {
-      return null;
+      throw InvalidGenerationSourceError(
+        '''`@ClassValidator` failed to generate validator function for each field''',
+        element: element,
+      );
     }
     final validatorInstanceSources = createStaticFunctionValidatorFromInstance(
       modelName: elementName,

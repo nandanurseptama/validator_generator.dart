@@ -5,7 +5,7 @@ bool validateMinStringLength({
 }) {
   if (length <= 0) {
     throw Exception(
-      "length should be higher than zero. The value you supplied length=$length",
+      '''length should be higher than zero. The value you supplied length=$length''',
     );
   }
   return value.length >= length;
@@ -18,7 +18,7 @@ bool validateMaxStringLength({
 }) {
   if (length <= 0) {
     throw Exception(
-      "length should be higher than zero. The value you supplied length=$length",
+      '''length should be higher than zero. The value you supplied length=$length''',
     );
   }
   return value.length <= length;
@@ -36,15 +36,15 @@ bool validateMinMaxStringLength({
   required int maxLength,
   required String value,
 }) {
-  if ((minLength <= 0 || maxLength <= 0)) {
+  if (minLength <= 0 || maxLength <= 0) {
     throw Exception(
-      "minLength & maxLength should be higher than zero. The value you supplied minLength=$minLength, maxLength=$maxLength",
+      '''minLength & maxLength should be higher than zero. The value you supplied minLength=$minLength, maxLength=$maxLength''',
     );
   }
 
   if (minLength >= maxLength) {
     throw Exception(
-      "minLength should be lower than maxLength. The value you supplied minLength=$minLength, maxLength=$maxLength",
+      '''minLength should be lower than maxLength. The value you supplied minLength=$minLength, maxLength=$maxLength''',
     );
   }
   return value.length >= minLength && value.length <= maxLength;

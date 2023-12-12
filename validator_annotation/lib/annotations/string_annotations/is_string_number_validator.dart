@@ -16,7 +16,7 @@ class IsStringNumberValidator extends ValidatorAnnotation {
   String get defaultErrorMessage => 'is not string number';
 
   @override
-  bool validate(dynamic value) {
+  bool isValid(dynamic value) {
     assertNullableString(
       value: value,
     );

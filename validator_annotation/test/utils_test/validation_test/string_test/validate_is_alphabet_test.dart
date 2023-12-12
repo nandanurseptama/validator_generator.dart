@@ -1,5 +1,5 @@
-import 'package:validator_annotation/utils/utils.dart';
 import 'package:test/test.dart';
+import 'package:validator_annotation/utils/utils.dart';
 
 void main() {
   group('validateIsAlphabet', () {
@@ -11,41 +11,38 @@ void main() {
     });
 
     test(
-        'should return true for valid alphabets with whitespace when trimWhiteSpace is true',
+        '''should return true for valid alphabets with whitespace when trimWhiteSpace is true''',
         () {
       expect(
         validateIsAlphabet(
           value: 'a b c',
-          trimWhiteSpace: true,
         ),
         true,
       );
     });
 
     test(
-        'should return true for valid alphabets with newline when allowMultiline is true',
+        '''should return true for valid alphabets with newline when allowMultiline is true''',
         () {
       expect(
-          validateIsAlphabet(value: 'a\nb\nc', allowMultiline: true), isTrue);
+          validateIsAlphabet(value: 'a\nb\nc'), isTrue,);
     });
 
     test(
-        'should return true for valid alphabets with mixed case when onlyAcceptLowerCase is false',
+        '''should return true for valid alphabets with mixed case when onlyAcceptLowerCase is false''',
         () {
       expect(
-          validateIsAlphabet(value: 'aBc', onlyAcceptLowerCase: false), isTrue);
+          validateIsAlphabet(value: 'aBc'), isTrue,);
     });
 
     test(
-        'should return true for valid alphabets with mixed case and whitespace when trimWhiteSpace is true',
+        '''should return true for valid alphabets with mixed case and whitespace when trimWhiteSpace is true''',
         () {
       expect(
           validateIsAlphabet(
             value: 'a B c',
-            onlyAcceptLowerCase: false,
-            trimWhiteSpace: true,
           ),
-          isTrue);
+          isTrue,);
     });
 
     test('should return false for invalid alphabets with numbers', () {
@@ -62,22 +59,22 @@ void main() {
     });
 
     test('should return false for null value', () {
-      expect(validateIsAlphabet(value: null), isFalse);
+      expect(validateIsAlphabet(), isFalse);
     });
 
     test(
-        'should return false for invalid alphabets with whitespace when trimWhiteSpace is false',
+        '''should return false for invalid alphabets with whitespace when trimWhiteSpace is false''',
         () {
       expect(
           validateIsAlphabet(
             value: 'a b c',
             trimWhiteSpace: false,
           ),
-          isFalse);
+          isFalse,);
     });
 
     test(
-        'should return false for invalid alphabets with newline when allowMultiline is false',
+        '''should return false for invalid alphabets with newline when allowMultiline is false''',
         () {
       expect(
         validateIsAlphabet(
@@ -89,7 +86,7 @@ void main() {
     });
 
     test(
-        'should return false for invalid alphabets with mixed case when onlyAcceptLowerCase is true',
+        '''should return false for invalid alphabets with mixed case when onlyAcceptLowerCase is true''',
         () {
       expect(
         validateIsAlphabet(

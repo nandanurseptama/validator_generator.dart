@@ -8,3 +8,7 @@ bool isPascalCase(String input) => RegExp(r'^[A-Z][a-zA-Z]*$').hasMatch(
     );
 bool isFirstLetterUppercase(String input) =>
     input.isNotEmpty && input[0] == input[0].toUpperCase();
+bool isScreamCase(String variableName) =>
+    RegExp(r'^[A-Z]+(_[A-Z]+)*$').hasMatch(
+      variableName,
+    );

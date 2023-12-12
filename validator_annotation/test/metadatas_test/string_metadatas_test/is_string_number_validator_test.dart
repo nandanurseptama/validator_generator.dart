@@ -4,14 +4,14 @@ import 'package:validator_annotation/annotations/string_annotations/is_string_nu
 import '../metadata_test_helper.dart';
 
 void main() {
-  final String expectedFieldName = "salary";
-  final String expectedErrorMessage = "salary must be number";
-  final IsStringNumberValidator instanceToTest = IsStringNumberValidator(
+  const expectedFieldName = 'salary';
+  const expectedErrorMessage = 'salary must be number';
+  const  instanceToTest = IsStringNumberValidator(
     fieldName: expectedFieldName,
     errorMessage: expectedErrorMessage,
   );
 
-  group("IsStringNumberValidator", () {
+  group('IsStringNumberValidator', () {
     testValidatorMetadataFieldName(
       instanceToTest,
       expectedFieldName,
@@ -23,19 +23,18 @@ void main() {
     testValidatorMetadataSuccessValidate(
       instance: instanceToTest,
       expectedValidateResultValue: true,
-      valueToValidate: "1000",
+      valueToValidate: '1000',
     );
 
     testValidatorMetadataSuccessValidate(
       instance: instanceToTest,
       expectedValidateResultValue: false,
-      valueToValidate: "a",
+      valueToValidate: 'a',
       expectedErrorMessage: expectedErrorMessage,
     );
 
     testValidatorMetadataFailedValidate(
       instance: instanceToTest,
-      valueToValidate: null,
     );
 
     testValidatorMetadataFailedValidate(

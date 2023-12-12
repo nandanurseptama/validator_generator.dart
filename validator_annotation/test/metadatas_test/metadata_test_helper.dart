@@ -7,7 +7,7 @@ void testValidatorMetadataFieldName(
   String expectedFieldName,
 ) {
   test(
-    "Validator metadadata ${instance.runtimeType} should have fieldName=$expectedFieldName",
+    '''Validator metadadata ${instance.runtimeType} should have fieldName=$expectedFieldName''',
     () {
       expect(
         instance.fieldName,
@@ -23,7 +23,7 @@ void testValidatorMetadataErrorMessage(
   String expectedErrorMessage,
 ) {
   test(
-    "Validator metadadata ${instance.runtimeType} should have errorMessage=$expectedErrorMessage",
+    '''Validator metadadata ${instance.runtimeType} should have errorMessage=$expectedErrorMessage''',
     () {
       expect(
         instance.errorMessage,
@@ -33,11 +33,13 @@ void testValidatorMetadataErrorMessage(
   );
 }
 
-/// Test wrapper when validator metadata success validate [valueToValidate] a.k.a not throwing exception
+/// Test wrapper when validator metadata success validate
+/// [valueToValidate] a.k.a not throwing exception
 ///
 /// Either [expectedValidateResultValue] is `true` or `false`
 ///
-/// when [expectedValidateResultValue] is `false`, [expectedErrorMessage] should be provided
+/// when [expectedValidateResultValue] is `
+/// false`, [expectedErrorMessage] should be provided
 void testValidatorMetadataSuccessValidate({
   required ValidatorAnnotation instance,
   required bool expectedValidateResultValue,
@@ -46,12 +48,13 @@ void testValidatorMetadataSuccessValidate({
   String? expectedErrorMessage,
 }) {
   assert(
-      expectedValidateResultValue ||
-          (!expectedValidateResultValue && expectedErrorMessage != null),
-      "");
+    expectedValidateResultValue ||
+        (!expectedValidateResultValue && expectedErrorMessage != null),
+    '',
+  );
   test(
     description ??
-        "Validator metadata ${instance.runtimeType} function validate should return `$expectedValidateResultValue`, when value to validate has value=$valueToValidate and value type is ${valueToValidate.runtimeType}",
+        '''Validator metadata ${instance.runtimeType} function validate should return `$expectedValidateResultValue`, when value to validate has value=$valueToValidate and value type is ${valueToValidate.runtimeType}''',
     () {
       expect(
         instance.validate(
@@ -73,7 +76,8 @@ void testValidatorMetadataSuccessValidate({
   );
 }
 
-/// Test wrapper when validator metadata failed validate [valueToValidate] a.k.a throwing exception
+/// Test wrapper when validator metadata failed validate [valueToValidate]
+/// a.k.a throwing exception
 void testValidatorMetadataFailedValidate({
   String? description,
   required ValidatorAnnotation instance,
@@ -81,7 +85,7 @@ void testValidatorMetadataFailedValidate({
 }) {
   test(
       description ??
-          "Validator metadata ${instance.runtimeType} function validate should throw Exception, when value to validate has value=$valueToValidate and value type is ${valueToValidate.runtimeType}",
+          '''Validator metadata ${instance.runtimeType} function validate should throw Exception, when value to validate has value=$valueToValidate and value type is ${valueToValidate.runtimeType}''',
       () {
     expect(
       () => instance.validate(valueToValidate),

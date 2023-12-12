@@ -1,5 +1,5 @@
-import 'package:validator_annotation/annotations/base_validator_annotation.dart';
-import 'package:validator_annotation/utils/utils.dart';
+import '../../utils/utils.dart';
+import '../base_validator_annotation.dart';
 
 /// Metadata validator to check if value is instance of [String]
 ///
@@ -13,14 +13,14 @@ class IsStringValidator extends ValidatorAnnotation {
     super.fieldName,
     this.allowNullable = true,
   }) : super(
-          name: "IsString",
+          name: 'IsString',
         );
 
   @override
-  String get defaultErrorMessage => "is not String";
+  String get defaultErrorMessage => 'is not String';
 
   @override
-  bool validate(value) {
+  bool isValid(dynamic value) {
     try {
       assertNullableString(
         value: value,

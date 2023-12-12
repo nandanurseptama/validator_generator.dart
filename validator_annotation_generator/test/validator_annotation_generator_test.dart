@@ -24,5 +24,7 @@ void main() async {
 
 const _expectedAnnotatedTests = {
   'UserModel',
+  'UserModelWithSnackCaseNamingConvention',
+  'ProfileModel',
   'topLevelVariabel',
 };

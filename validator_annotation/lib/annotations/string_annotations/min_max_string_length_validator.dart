@@ -43,7 +43,7 @@ class MinMaxStringLengthValidator extends ValidatorAnnotation {
       'value length should be between $minLength & $maxLength';
 
   @override
-  bool validate(dynamic value) {
+  bool isValid(dynamic value) {
     assertNullableString(
       value: value,
     );

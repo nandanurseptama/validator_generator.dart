@@ -33,7 +33,7 @@ class MinStringLengthValidator extends ValidatorAnnotation {
       'value length should be higher or equal to `$length`';
 
   @override
-  bool validate(dynamic value) {
+  bool isValid(dynamic value) {
     assertNullableString(
       value: value,
     );

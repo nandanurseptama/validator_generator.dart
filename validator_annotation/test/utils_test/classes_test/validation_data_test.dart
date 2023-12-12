@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_dynamic_calls
+
 import 'package:test/test.dart';
 import 'package:validator_annotation/validator_annotation.dart';
 
@@ -9,11 +11,11 @@ void main() {
 
   setUpAll(() {
     expectedSymbol = 'userName';
-    expectedValueToValidate = "nandanurseptama";
+    expectedValueToValidate = 'nandanurseptama';
 
     expectedValidatorMetadatas = [
-      IsNotEmptyStringValidator(),
-      MinMaxStringLengthValidator(
+      const IsNotEmptyStringValidator(),
+      const MinMaxStringLengthValidator(
         minLength: 3,
         maxLength: 24,
       ),
@@ -26,8 +28,8 @@ void main() {
     );
   });
 
-  group("ValidationData", () {
-    test("all properties should be same with expected", () {
+  group('ValidationData', () {
+    test('all properties should be same with expected', () {
       expect(
         expectedSymbol,
         validationDataToTest.instanceMemberSymbol,
@@ -45,7 +47,9 @@ void main() {
       );
 
       expect(
-          validationDataToTest.annotations, isA<List<ValidatorAnnotation>>());
+        validationDataToTest.annotations,
+        isA<List<ValidatorAnnotation>>(),
+      );
 
       expect(
         validationDataToTest.annotations,
@@ -58,9 +62,9 @@ void main() {
       );
     });
 
-    group("equality test", () {
-      test("validation data with difference property should not same", () {
-        var matcherInstance = ValidationData(
+    group('equality test', () {
+      test('validation data with difference property should not same', () {
+        const matcherInstance = ValidationData(
           instanceMemberSymbol: 'child',
           valueToValidate: 1,
           annotations: [

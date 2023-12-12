@@ -4,54 +4,53 @@ import 'package:validator_annotation/annotations/string_annotations/is_email_val
 import '../metadata_test_helper.dart';
 
 void main() {
-  group("IsEmailValidator", () {
+  group('IsEmailValidator', () {
     testValidatorMetadataFieldName(
-      IsEmailValidator(
-        fieldName: "email",
+      const IsEmailValidator(
+        fieldName: 'email',
       ),
-      "email",
+      'email',
     );
 
     testValidatorMetadataErrorMessage(
-      IsEmailValidator(
+      const IsEmailValidator(
         errorMessage: "is'nt valid email",
       ),
       "is'nt valid email",
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: IsEmailValidator(),
+      instance: const IsEmailValidator(),
       expectedValidateResultValue: true,
-      valueToValidate: "bard@gmail.com",
+      valueToValidate: 'bard@gmail.com',
       description:
-          "When value is valid email, should be success validate and return true",
+          '''When value is valid email, should be success validate and return true''',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: IsEmailValidator(
+      instance: const IsEmailValidator(
         errorMessage: "is'nt valid email",
       ),
       expectedValidateResultValue: false,
-      valueToValidate: "bard@gmail@com",
+      valueToValidate: 'bard@gmail@com',
       description:
-          "When value not valid email, should be success validate and return false",
+          '''When value not valid email, should be success validate and return false''',
       expectedErrorMessage: "is'nt valid email",
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: IsEmailValidator(
+      instance: const IsEmailValidator(
         errorMessage: "is'nt valid email",
       ),
       expectedValidateResultValue: false,
-      valueToValidate: null,
       description:
-          "When value is null, should be success validate and return false",
+          'When value is null, should be success validate and return false',
       expectedErrorMessage: "is'nt valid email",
     );
 
     testValidatorMetadataFailedValidate(
-      instance: IsEmailValidator(),
-      description: "When value is not string, should be throw exception",
+      instance: const IsEmailValidator(),
+      description: 'When value is not string, should be throw exception',
       valueToValidate: 42,
     );
   });

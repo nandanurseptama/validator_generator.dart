@@ -1,23 +1,29 @@
-import 'package:validator_annotation/utils/validation/numeric_validation/validate_min_max_value.dart';
 import 'package:test/test.dart';
+import 'package:validator_annotation/utils/validation/numeric_validation/validate_min_max_value.dart';
 
 void main() {
   group('validateMinMaxValue', () {
     test('should return true for values within the range', () {
       expect(validateMinMaxValue(value: 5, minValue: 0, maxValue: 10), isTrue);
       expect(
-          validateMinMaxValue(value: 7.5, minValue: 5, maxValue: 10), isTrue);
+        validateMinMaxValue(value: 7.5, minValue: 5, maxValue: 10),
+        isTrue,
+      );
     });
 
     test('should return false for values outside the range', () {
       expect(
-          validateMinMaxValue(value: 15, minValue: 0, maxValue: 10), isFalse);
+        validateMinMaxValue(value: 15, minValue: 0, maxValue: 10),
+        isFalse,
+      );
       expect(validateMinMaxValue(value: 3, minValue: 5, maxValue: 10), isFalse);
     });
 
     test('should throw assertion error for invalid range', () {
-      expect(() => validateMinMaxValue(value: 5, minValue: 10, maxValue: 5),
-          throwsA(isA<Exception>()));
+      expect(
+        () => validateMinMaxValue(value: 5, minValue: 10, maxValue: 5),
+        throwsA(isA<Exception>()),
+      );
     });
   });
 

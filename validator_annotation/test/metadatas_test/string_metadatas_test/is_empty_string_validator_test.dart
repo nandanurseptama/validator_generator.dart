@@ -4,63 +4,59 @@ import 'package:validator_annotation/validator_annotation.dart';
 import '../metadata_test_helper.dart';
 
 void main() {
-  group("IsEmptyStringValidator", () {
+  group('IsEmptyStringValidator', () {
     testValidatorMetadataFieldName(
-      IsEmptyStringValidator(
-        fieldName: "userName",
+      const IsEmptyStringValidator(
+        fieldName: 'userName',
       ),
-      "userName",
+      'userName',
     );
 
     testValidatorMetadataErrorMessage(
-      IsEmptyStringValidator(
-        errorMessage: "userName must be empty",
+      const IsEmptyStringValidator(
+        errorMessage: 'userName must be empty',
       ),
-      "userName must be empty",
+      'userName must be empty',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: IsEmptyStringValidator(),
+      instance: const IsEmptyStringValidator(),
       expectedValidateResultValue: true,
-      valueToValidate: "",
+      valueToValidate: '',
       description:
-          "When value is string empty, should be success validate and return true",
+          '''When value is string empty, should be success validate and return true''',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: IsEmptyStringValidator(
-        errorMessage: "not string empty",
+      instance: const IsEmptyStringValidator(
+        errorMessage: 'not string empty',
       ),
       expectedValidateResultValue: false,
-      valueToValidate: "no name",
+      valueToValidate: 'no name',
       description:
-          "When string is not empty, should be success validate and return false",
-      expectedErrorMessage: "not string empty",
+          '''When string is not empty, should be success validate and return false''',
+      expectedErrorMessage: 'not string empty',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: IsEmptyStringValidator(
-        allowNullable: true,
-      ),
+      instance: const IsEmptyStringValidator(),
       expectedValidateResultValue: true,
-      valueToValidate: null,
       description:
-          "When value is string null and allow nullable, should be success validate and return true",
+          '''When value is string null and allow nullable, should be success validate and return true''',
     );
 
     testValidatorMetadataFailedValidate(
-      instance: IsEmptyStringValidator(),
-      description: "When value is not string, should be throw exception",
+      instance: const IsEmptyStringValidator(),
+      description: 'When value is not string, should be throw exception',
       valueToValidate: 42,
     );
 
     testValidatorMetadataFailedValidate(
-      instance: IsEmptyStringValidator(
+      instance: const IsEmptyStringValidator(
         allowNullable: false,
       ),
       description:
-          "When value is null and do not allow nullable, should be throw exception",
-      valueToValidate: null,
+          '''When value is null and do not allow nullable, should be throw exception''',
     );
   });
 }

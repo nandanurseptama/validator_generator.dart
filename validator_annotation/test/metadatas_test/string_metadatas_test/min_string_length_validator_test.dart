@@ -4,16 +4,16 @@ import 'package:validator_annotation/annotations/string_annotations/min_string_l
 import '../metadata_test_helper.dart';
 
 void main() {
-  final String expectedFieldName = "userName";
-  final String expectedErrorMessage =
-      "userName length must be higher or equal to 5";
-  final MinStringLengthValidator instanceToTest = MinStringLengthValidator(
+  const expectedFieldName = 'userName';
+  const expectedErrorMessage =
+      'userName length must be higher or equal to 5';
+  const instanceToTest = MinStringLengthValidator(
     fieldName: expectedFieldName,
     errorMessage: expectedErrorMessage,
     length: 5,
   );
 
-  group("MinStringLengthValidator", () {
+  group('MinStringLengthValidator', () {
     testValidatorMetadataFieldName(
       instanceToTest,
       expectedFieldName,
@@ -26,25 +26,24 @@ void main() {
     testValidatorMetadataSuccessValidate(
       instance: instanceToTest,
       expectedValidateResultValue: true,
-      valueToValidate: "kiasu",
+      valueToValidate: 'kiasu',
     );
 
     testValidatorMetadataSuccessValidate(
       instance: instanceToTest,
       expectedValidateResultValue: true,
-      valueToValidate: "kiasu123",
+      valueToValidate: 'kiasu123',
     );
 
     testValidatorMetadataSuccessValidate(
       instance: instanceToTest,
       expectedValidateResultValue: false,
-      valueToValidate: "xxx",
+      valueToValidate: 'xxx',
       expectedErrorMessage: expectedErrorMessage,
     );
 
     testValidatorMetadataFailedValidate(
       instance: instanceToTest,
-      valueToValidate: null,
     );
 
     testValidatorMetadataFailedValidate(
@@ -53,14 +52,14 @@ void main() {
     );
 
     testValidatorMetadataFailedValidate(
-      instance: MinStringLengthValidator(
+      instance: const MinStringLengthValidator(
         length: 0,
         errorMessage: expectedErrorMessage,
         fieldName: expectedFieldName,
       ),
       description:
-          "when min string length lower or equal to zero, should throw exception",
-      valueToValidate: "nana",
+          '''when min string length lower or equal to zero, should throw exception''',
+      valueToValidate: 'nana',
     );
   });
 }

@@ -7,7 +7,7 @@ part of 'user_model.dart';
 // **************************************************************************
 
 class UserModelValidator {
-  static String? validateEmail(String value) {
+  static String? validate_email(String value) {
     final validatorAnnotations = [
       IsNotEmptyStringValidator(),
       IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
@@ -18,7 +18,7 @@ class UserModelValidator {
     );
   }
 
-  static String? validatePassword(String value) {
+  static String? validate_password(String value) {
     final validatorAnnotations = [IsNotEmptyStringValidator()];
     return validateField(
       value,

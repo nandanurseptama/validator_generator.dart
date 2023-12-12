@@ -1,8 +1,8 @@
-import 'package:validator_annotation/utils/validation/numeric_validation/validate_is_not_negative.dart';
 import 'package:test/test.dart';
+import 'package:validator_annotation/utils/validation/numeric_validation/validate_is_not_negative.dart';
 
 void main() {
-  group("validate is negative test", () {
+  group('validate is negative test', () {
     late List<int> notNegativeInt;
     late List<double> notNegativeDouble;
     late List<num> notNegativeNum;
@@ -34,14 +34,14 @@ void main() {
     });
 
     test(
-      "when value is not negative should return true",
+      'when value is not negative should return true',
       () {
         for (var i in [
           ...notNegativeNum,
           ...notNegativeDouble,
-          ...notNegativeInt
+          ...notNegativeInt,
         ]) {
-          var result = validateIsNotNegative(
+          final result = validateIsNotNegative(
             i,
           );
           expect(
@@ -52,10 +52,10 @@ void main() {
       },
     );
     test(
-      "when value is negative should return false",
+      'when value is negative should return false',
       () {
         for (var i in [...negativeNum, ...negativeDouble, ...negativeInt]) {
-          var result = validateIsNotNegative(
+          final result = validateIsNotNegative(
             i,
           );
           expect(

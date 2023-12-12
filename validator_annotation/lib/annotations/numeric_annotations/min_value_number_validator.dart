@@ -1,5 +1,5 @@
-import 'package:validator_annotation/annotations/annotations.dart';
-import 'package:validator_annotation/utils/utils.dart';
+import '../../utils/utils.dart';
+import '../annotations.dart';
 
 /// Validator metadata to check if a number higher than or equal to [value]
 ///
@@ -11,17 +11,16 @@ class MinValueNumberValidator extends ValidatorAnnotation {
     super.errorMessage,
     required this.value,
   }) : super(
-          name: "MinValueNumberValidator",
+          name: 'MinValueNumberValidator',
         );
 
   @override
-  String get defaultErrorMessage => "must higher than or equal to $value";
+  String get defaultErrorMessage => 'must higher than or equal to $value';
 
   /// throw an exception when `value` is not [num]
   @override
-  bool validate(value) {
+  bool isValid(dynamic value) {
     assertNumeric(
-      allowNullable: false,
       value: value,
     );
     value as num;

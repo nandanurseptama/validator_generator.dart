@@ -1,3 +1,5 @@
+// ignore_for_file: require_trailing_commas
+
 import 'package:test/test.dart';
 import 'package:validator_annotation/validator_annotation.dart';
 
@@ -5,7 +7,6 @@ void main() {
   late ValidationResult validationResultToTest;
   late List<ValidationError> expectedValidationErrors;
   late List<ValidationData> expectedValidationDatas;
-  late ValidatorOptions expectedValidatorOptions;
 
   setUpAll(() {
     expectedValidationErrors = [
@@ -28,13 +29,8 @@ void main() {
       ),
     ];
 
-    expectedValidatorOptions = const ValidatorOptions(
-      stopWhenFirstError: true,
-    );
-
     validationResultToTest = ValidationResult(
       errors: expectedValidationErrors,
-      validatorOptions: expectedValidatorOptions,
       validationData: expectedValidationDatas,
     );
   });
@@ -44,7 +40,6 @@ void main() {
       expect(
         () => ValidationResult(
           errors: expectedValidationErrors,
-          validatorOptions: expectedValidatorOptions,
           validationData: expectedValidationDatas,
         ),
         returnsNormally,
@@ -67,7 +62,7 @@ void main() {
       );
       expect(
         validationResultToTest.firstErrorToString,
-        '${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}',
+        '''${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}''',
       );
       expect(
         validationResultToTest.isError,
@@ -81,12 +76,11 @@ void main() {
           error: (result) => result.firstErrorToString,
           noError: (result) => '',
         ),
-        '${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}',
+        '''${expectedValidationErrors.first.fieldName} : ${expectedValidationErrors.first.errorMessage}''',
       );
 
-      var validationResultWithoutError = const ValidationResult(
+      const validationResultWithoutError = ValidationResult(
         errors: [],
-        validatorOptions: ValidatorOptions(),
         validationData: [],
       );
       expect(
@@ -119,9 +113,9 @@ void main() {
     });
 
     test(
-        'two validation result instances with difference property values, should not match',
+        '''two validation result instances with difference property values, should not match''',
         () {
-      var validationResultMatcher = ValidationResult(
+      final validationResultMatcher = ValidationResult(
         errors: [
           ValidationError(
             fieldName: 'child',
@@ -129,7 +123,6 @@ void main() {
             errorMessage: 'must higher than or equal to 0',
           )
         ],
-        validatorOptions: const ValidatorOptions(),
         validationData: [
           const ValidationData(
             instanceMemberSymbol: 'child',
@@ -139,16 +132,12 @@ void main() {
                 value: 0,
               ),
             ],
-          )
+          ),
         ],
       );
 
       expect(
         validationResultToTest == validationResultMatcher,
-        isFalse,
-      );
-      expect(
-        validationResultToTest.props == validationResultMatcher.props,
         isFalse,
       );
     });

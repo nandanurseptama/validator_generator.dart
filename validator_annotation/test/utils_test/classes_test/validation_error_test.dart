@@ -9,9 +9,9 @@ void main() {
   late String expectedError;
 
   setUpAll(() {
-    expectedFieldName = "child";
+    expectedFieldName = 'child';
     expectedOriginalValue = -1;
-    expectedError = "child should be higher or same with zero";
+    expectedError = 'child should be higher or same with zero';
 
     validationErrorToTest = ValidationError(
       fieldName: expectedFieldName,
@@ -20,8 +20,8 @@ void main() {
     );
   });
 
-  group("ValidationError", () {
-    test("constructor should not error", () {
+  group('ValidationError', () {
+    test('constructor should not error', () {
       expect(
         () => ValidationError(
           fieldName: expectedFieldName,
@@ -31,7 +31,7 @@ void main() {
         returnsNormally,
       );
     });
-    test("all properties value must be same with expected value", () {
+    test('all properties value must be same with expected value', () {
       expect(
         validationErrorToTest.fieldName,
         expectedFieldName,
@@ -46,12 +46,12 @@ void main() {
       );
     });
 
-    test("instances ValidationError with difference property should not match",
+    test('instances ValidationError with difference property should not match',
         () {
-      var validationErrorMatcher = ValidationError(
-        fieldName: "salary",
+      final validationErrorMatcher = ValidationError(
+        fieldName: 'salary',
         originalValue: -10,
-        errorMessage: "Salary must be higher than zero",
+        errorMessage: 'Salary must be higher than zero',
       );
 
       expect(

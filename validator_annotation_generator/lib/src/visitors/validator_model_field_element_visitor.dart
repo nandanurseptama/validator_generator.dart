@@ -3,6 +3,7 @@ import 'package:analyzer/dart/element/visitor.dart';
 import 'package:source_gen/source_gen.dart';
 import 'package:validator_annotation/validator_annotation.dart';
 
+import '../configs/class_validator_config.dart';
 import '../utils/function_generator.dart';
 
 class ValidatorModelFieldElementVisitor extends SimpleElementVisitor<void> {
@@ -43,7 +44,9 @@ class ValidatorModelFieldElementVisitor extends SimpleElementVisitor<void> {
     );
   }
 
-  String? generateAllFieldsValidatorFunction() {
+  String? generateAllFieldsValidatorFunction(
+    ClassValidatorConfig config,
+  ) {
     if (fieldsWithAnnotations.isEmpty) {
       return null;
     }
@@ -52,6 +55,7 @@ class ValidatorModelFieldElementVisitor extends SimpleElementVisitor<void> {
           (e) => createStaticFunctionValidatorFromFieldNameAndMetadatas(
             fieldName: e.key,
             validatorAnnotations: e.value,
+            namingConvention: config.namingConvention,
           ),
         )
         .toList()

@@ -1,9 +1,13 @@
-/// Asserts that the given [value] is a String, and optionally allows null if specified.
+/// Asserts that the given [value] is a String, 
+/// and optionally allows null if specified.
 ///
-/// If [allowNullable] is set to `true` and the [value] is `null`, the assertion passes.
-/// If [allowNullable] is `false` (default) and the [value] is not a String or [Null], an exception is thrown.
+/// If [allowNullable] is set to `true` and the [value] is `null`, 
+/// the assertion passes.
+/// If [allowNullable] is `false` (default) and the [value] is not a String or 
+/// [Null], an exception is thrown.
 ///
-/// This function is useful for enforcing type constraints in cases where a String is expected.
+/// This function is useful for enforcing type constraints in cases where a 
+/// String is expected.
 ///
 /// Example:
 /// ```dart
@@ -34,6 +38,6 @@ void assertNullableString({
     return;
   }
   throw Exception(
-    "Expected a String but received a ${value.runtimeType}",
+    'Expected a String but received a ${value.runtimeType}',
   );
 }

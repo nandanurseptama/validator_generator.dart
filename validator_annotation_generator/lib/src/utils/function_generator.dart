@@ -1,15 +1,21 @@
+import 'package:validator_annotation/validator_annotation.dart';
+
 import '../configs/class_validator_config.dart';
-import '../helpers/variable_naming_helper.dart';
+import '../helpers/string_helpers.dart';
 
 /// [validatorAnnotations] lisf of string validator annotations
 String createStaticFunctionValidatorFromFieldNameAndMetadatas({
   required String fieldName,
   required List<String> validatorAnnotations,
+  required NamingConvention namingConvention,
 }) {
   if (validatorAnnotations.isEmpty || fieldName.isEmpty) {
     return '';
   }
-  final functionName = createStaticFunctionNameFromFieldName(fieldName);
+  final functionName = convertVariableNameToValidatorFunctionName(
+    fieldName,
+    namingConvention,
+  );
   final annotationSources = validatorAnnotations.join(',\n');
   final annotations = '''[\n$annotationSources];''';
   return '''

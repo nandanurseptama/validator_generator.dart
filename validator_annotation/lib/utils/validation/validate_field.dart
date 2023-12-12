@@ -1,4 +1,4 @@
-import 'package:validator_annotation/validator_annotation.dart';
+import '../../validator_annotation.dart';
 
 /// Validates a field using a list of [ValidatorAnnotation] annotations.
 ///
@@ -24,7 +24,10 @@ import 'package:validator_annotation/validator_annotation.dart';
 ///   inputValue,
 ///   [
 ///     IsNotEmptyStringValidator(errorMessage: 'Value is required.'),
-///     MinStringLengthValidator(length: 5, errorMessage: 'Must be at least 5 characters.'),
+///     MinStringLengthValidator(
+///       length: 5, 
+///       errorMessage: 'Must be at least 5 characters.',
+///     ),
 ///   ],
 /// );
 /// ```
@@ -40,9 +43,9 @@ String? validateField(
     return null;
   }
   for (final annotation in annotations) {
-    final isError = annotation.validate(value);
-    if (isError) {
-      return annotation.errorMessage;
+    final error = annotation.validate(value);
+    if (error != null) {
+      return error;
     }
   }
   return null;

@@ -4,15 +4,15 @@ import 'package:validator_annotation/annotations/numeric_annotations/max_value_n
 import '../metadata_test_helper.dart';
 
 void main() {
-  const int maxValue = 5;
-  const String expectedFieldName = "numOfChild";
-  const String expectedErrorMessage = "max value for num of child is $maxValue";
-  const int lowerValue = 4;
-  const int higherValue = 12;
+  const maxValue = 5;
+  const expectedFieldName = 'numOfChild';
+  const expectedErrorMessage = 'max value for num of child is $maxValue';
+  const lowerValue = 4;
+  const higherValue = 12;
 
-  group("IsEmailValidator", () {
+  group('IsEmailValidator', () {
     testValidatorMetadataFieldName(
-      MaxValueNumberValidator(
+      const MaxValueNumberValidator(
         value: maxValue,
         fieldName: expectedFieldName,
       ),
@@ -20,7 +20,7 @@ void main() {
     );
 
     testValidatorMetadataErrorMessage(
-      MaxValueNumberValidator(
+      const MaxValueNumberValidator(
         value: maxValue,
         errorMessage: expectedErrorMessage,
       ),
@@ -28,51 +28,50 @@ void main() {
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: MaxValueNumberValidator(
+      instance: const MaxValueNumberValidator(
         value: maxValue,
       ),
       expectedValidateResultValue: true,
       valueToValidate: maxValue,
       description:
-          "When value is equal to maxValue=$maxValue, should be success validate and return true",
+          '''When value is equal to maxValue=$maxValue, should be success validate and return true''',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: MaxValueNumberValidator(
+      instance: const MaxValueNumberValidator(
         value: maxValue,
       ),
       expectedValidateResultValue: true,
       valueToValidate: lowerValue,
       description:
-          "When value is lower to maxValue=$maxValue, should be success validate and return true",
+          '''When value is lower to maxValue=$maxValue, should be success validate and return true''',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: MaxValueNumberValidator(
+      instance: const MaxValueNumberValidator(
         value: maxValue,
         errorMessage: expectedErrorMessage,
       ),
       expectedValidateResultValue: false,
       valueToValidate: higherValue,
       description:
-          "When value is higher than maxValue=$maxValue, should be success validate and return false",
+          '''When value is higher than maxValue=$maxValue, should be success validate and return false''',
       expectedErrorMessage: expectedErrorMessage,
     );
 
     testValidatorMetadataFailedValidate(
-      instance: MaxValueNumberValidator(
+      instance: const MaxValueNumberValidator(
         value: maxValue,
       ),
-      description: "When value is null, should be throw exception",
-      valueToValidate: null,
+      description: '''When value is null, should be throw exception''',
     );
 
     testValidatorMetadataFailedValidate(
-      instance: MaxValueNumberValidator(
+      instance: const MaxValueNumberValidator(
         value: maxValue,
       ),
-      description: "When value is not numeric, should be throw exception",
-      valueToValidate: "42",
+      description: '''When value is not numeric, should be throw exception''',
+      valueToValidate: '42',
     );
   });
 }

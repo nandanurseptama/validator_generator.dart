@@ -4,16 +4,16 @@ import 'package:validator_annotation/annotations/string_annotations/max_string_l
 import '../metadata_test_helper.dart';
 
 void main() {
-  final String expectedFieldName = "userName";
-  final String expectedErrorMessage =
-      "userName length must be lower or equal to 8";
-  final MaxStringLengthValidator instanceToTest = MaxStringLengthValidator(
+  const expectedFieldName = 'userName';
+  const expectedErrorMessage =
+      'userName length must be lower or equal to 8';
+  const instanceToTest = MaxStringLengthValidator(
     fieldName: expectedFieldName,
     errorMessage: expectedErrorMessage,
     length: 5,
   );
 
-  group("MaxStringLengthValidator", () {
+  group('MaxStringLengthValidator', () {
     testValidatorMetadataFieldName(
       instanceToTest,
       expectedFieldName,
@@ -25,19 +25,18 @@ void main() {
     testValidatorMetadataSuccessValidate(
       instance: instanceToTest,
       expectedValidateResultValue: true,
-      valueToValidate: "kiasu",
+      valueToValidate: 'kiasu',
     );
 
     testValidatorMetadataSuccessValidate(
       instance: instanceToTest,
       expectedValidateResultValue: false,
-      valueToValidate: "kiasu123",
+      valueToValidate: 'kiasu123',
       expectedErrorMessage: expectedErrorMessage,
     );
 
     testValidatorMetadataFailedValidate(
       instance: instanceToTest,
-      valueToValidate: null,
     );
 
     testValidatorMetadataFailedValidate(
@@ -46,14 +45,14 @@ void main() {
     );
 
     testValidatorMetadataFailedValidate(
-      instance: MaxStringLengthValidator(
+      instance: const MaxStringLengthValidator(
         length: 0,
         errorMessage: expectedErrorMessage,
         fieldName: expectedFieldName,
       ),
       description:
-          "when max string length lower or equal to zero, should throw exception",
-      valueToValidate: "nana",
+          '''when max string length lower or equal to zero, should throw exception''',
+      valueToValidate: 'nana',
     );
   });
 }

@@ -1,5 +1,6 @@
-import 'package:validator_annotation/annotations/annotations.dart';
-import 'package:validator_annotation/utils/utils.dart';
+import '../../utils/utils.dart';
+
+import '../annotations.dart';
 
 /// Validator metadata to check if number is positive
 ///
@@ -9,19 +10,18 @@ class IsPositiveNumberValidator extends ValidatorAnnotation {
     super.fieldName,
     super.errorMessage,
   }) : super(
-          name: "IsPositiveNumberValidator",
+          name: 'IsPositiveNumberValidator',
         );
 
   @override
-  String get defaultErrorMessage => "must be positive";
+  String get defaultErrorMessage => 'must be positive';
 
   /// return `true` if value is positive
   ///
   /// throw an exception when `value` is not [num]
   @override
-  bool validate(value) {
+  bool isValid(dynamic value) {
     assertNumeric(
-      allowNullable: false,
       value: value,
     );
     value as num;

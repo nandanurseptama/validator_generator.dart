@@ -1,11 +1,12 @@
-import 'package:validator_annotation/annotations/annotations.dart';
-import 'package:validator_annotation/utils/utils.dart';
+import '../../utils/utils.dart';
+import '../annotations.dart';
 
 /// [IsEmptyStringValidator] Decorator
 ///
 /// Check if an [String] instance is empty or not
 ///
-/// [trimWhiteSpace] if true the whitespace and tab will be replaced by empty string
+/// [trimWhiteSpace] if true the whitespace and 
+/// tab will be replaced by empty string
 ///
 /// [allowNullable] if `true`, null will be considered as empty string
 ///
@@ -21,14 +22,14 @@ class IsEmptyStringValidator extends ValidatorAnnotation {
     this.trimWhiteSpace = false,
     this.allowNullable = true,
   }) : super(
-          name: "IsEmptyStringValidator",
+          name: 'IsEmptyStringValidator',
         );
 
   @override
-  String get defaultErrorMessage => "is not empty";
+  String get defaultErrorMessage => 'is not empty';
 
   @override
-  bool validate(dynamic value) {
+  bool isValid(dynamic value) {
     assertNullableString(
       value: value,
       allowNullable: allowNullable,

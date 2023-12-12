@@ -8,7 +8,7 @@ bool validateMinMaxValue<T extends num>({
 }) {
   if (minValue >= maxValue) {
     throw Exception(
-      "minValue should lower than maxValue. The value you supllied are minValue=$minValue & maxValue=$maxValue",
+      '''minValue should lower than maxValue. The value you supllied are minValue=$minValue & maxValue=$maxValue''',
     );
   }
   return value >= minValue && value <= maxValue;
@@ -18,14 +18,12 @@ bool validateMinMaxValue<T extends num>({
 bool validateMaxValue<T extends num>({
   required T value,
   required T maxValue,
-}) {
-  return value <= maxValue;
-}
+}) =>
+    value <= maxValue;
 
 /// validate if [value] >= [minValue]
 bool validateMinValue<T extends num>({
   required T value,
   required T minValue,
-}) {
-  return value >= minValue;
-}
+}) =>
+    value >= minValue;

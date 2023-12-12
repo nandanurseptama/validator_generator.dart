@@ -1,5 +1,5 @@
-import 'package:validator_annotation/utils/validation/numeric_validation/validate_is_positive.dart';
 import 'package:test/test.dart';
+import 'package:validator_annotation/utils/validation/numeric_validation/validate_is_positive.dart';
 
 void main() {
   group('validateIsPositive Test', () {

@@ -1,3 +1,7 @@
+import 'package:validator_annotation/validator_annotation.dart';
+
+import 'bool_helpers.dart';
+
 String lowerFirstLetter(String input) {
   if (input.isEmpty) {
     return input; // Return the input unchanged if it's an empty string
@@ -87,4 +91,118 @@ String toSnakeCase(String input) {
   }
 
   return words.join();
+}
+
+List<String> getListOfWordsFromVariableName(String variableName) {
+  if (isCamelCase(variableName) || isPascalCase(variableName)) {
+    return extractWordsFromPascalCaseOrCamelCase(
+      variableName,
+    );
+  }
+  if (isSnakeCase(variableName) || isScreamCase(variableName)) {
+    return variableName.split(
+      '_',
+    );
+  }
+  return [
+    variableName,
+  ];
+}
+
+List<String> extractWordsFromPascalCaseOrCamelCase(String input) {
+  final words = <String>[];
+  final regExp = RegExp(r'([a-z]+|[A-Z][a-z]*)');
+
+  final Iterable<Match> matches = regExp.allMatches(input);
+
+  for (final match in matches) {
+    if (match.group(0) != null) {
+      words.add(match.group(0)!);
+    }
+  }
+
+  return words;
+}
+
+String createCamelCase(List<String> words) {
+  if (words.isEmpty) {
+    return '';
+  }
+
+  final sb = StringBuffer(words[0].toLowerCase());
+
+  for (var i = 1; i < words.length; i++) {
+    sb
+      ..write(
+        words[i][0].toUpperCase(),
+      )
+      ..write(
+        words[i].substring(1).toLowerCase(),
+      );
+  }
+
+  return sb.toString();
+}
+
+String createPascalCase(List<String> words) {
+  if (words.isEmpty) {
+    return '';
+  }
+
+  final sb = StringBuffer();
+
+  for (final word in words) {
+    sb
+      ..write(word[0].toUpperCase())
+      ..write(word.substring(1).toLowerCase());
+  }
+
+  return sb.toString();
+}
+
+String createSnackCase(List<String> words) {
+  if (words.isEmpty) {
+    return '';
+  }
+  return words.map((e) => e.toLowerCase()).toList().join(
+        '_',
+      );
+}
+
+String createScreamCase(List<String> words) {
+  if (words.isEmpty) {
+    return '';
+  }
+  return words.map((e) => e.toUpperCase()).toList().join(
+        '_',
+      );
+}
+
+String convertVariableNameToValidatorFunctionName(
+  String variableName,
+  NamingConvention namingConventionOption,
+) {
+  final variableNameWords = getListOfWordsFromVariableName(
+    variableName,
+  );
+  final words = [
+    'validate',
+    ...variableNameWords,
+  ];
+  if (namingConventionOption == NamingConvention.camelCase) {
+    return createCamelCase(
+      words,
+    );
+  }
+  if (namingConventionOption == NamingConvention.pascalCase) {
+    return createPascalCase(
+      words,
+    );
+  }
+  if (namingConventionOption == NamingConvention.snackCase) {
+    return createSnackCase(
+      words,
+    );
+  }
+  return 'validate$variableName';
 }

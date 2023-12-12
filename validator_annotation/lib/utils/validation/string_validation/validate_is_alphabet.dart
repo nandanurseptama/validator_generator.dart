@@ -1,10 +1,11 @@
-import 'package:validator_annotation/utils/extensions/string_extension.dart';
+import '../../extensions/string_extension.dart';
 
 import 'validate_is_empty.dart';
 
 /// check if the [value] is alphabet or not
 ///
-/// when [trimWhiteSpace] is true all whitespace will be replaced by string empty
+/// when [trimWhiteSpace] is true all 
+/// whitespace will be replaced by string empty
 ///
 /// when [onlyAcceptLowerCase] is true only accept 'a-z' character
 bool validateIsAlphabet({
@@ -24,13 +25,11 @@ bool validateIsAlphabet({
 
   var regex = RegExp(
     r'^[a-zA-Z]+$',
-    caseSensitive: true,
     multiLine: allowMultiline,
   );
   if (onlyAcceptLowerCase) {
     regex = RegExp(
       r'^[a-z]+$',
-      caseSensitive: true,
       multiLine: allowMultiline,
     );
   }

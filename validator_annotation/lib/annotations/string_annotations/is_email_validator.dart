@@ -15,7 +15,7 @@ class IsEmailValidator extends ValidatorAnnotation {
   String get defaultErrorMessage => 'not email';
 
   @override
-  bool validate(dynamic value) {
+  bool isValid(dynamic value) {
     assertNullableString(
       allowNullable: true,
       value: value,

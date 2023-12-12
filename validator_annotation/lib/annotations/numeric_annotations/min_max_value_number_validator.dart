@@ -1,7 +1,8 @@
-import 'package:validator_annotation/annotations/annotations.dart';
-import 'package:validator_annotation/utils/utils.dart';
+import '../../utils/utils.dart';
+import '../annotations.dart';
 
-/// Validator metadata to check if a number value between [minValue] and [maxValue]
+/// Validator metadata to check 
+/// if a number value between [minValue] and [maxValue]
 ///
 /// [minValue] <= `value` <= [maxValue] and [maxValue] > [minValue]
 ///
@@ -17,18 +18,17 @@ class MinMaxValueNumberValidator extends ValidatorAnnotation {
     required this.minValue,
     required this.maxValue,
   }) : super(
-          name: "MinMaxValueNumberValidator",
+          name: 'MinMaxValueNumberValidator',
         );
 
   @override
   String get defaultErrorMessage =>
-      "value must be between $minValue and $maxValue";
+      'value must be between $minValue and $maxValue';
 
   /// throw an exception when `value` is not [num]
   @override
-  bool validate(value) {
+  bool isValid(dynamic value) {
     assertNumeric(
-      allowNullable: false,
       value: value,
     );
     value as num;

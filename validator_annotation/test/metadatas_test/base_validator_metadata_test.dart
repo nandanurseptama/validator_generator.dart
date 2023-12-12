@@ -15,7 +15,7 @@ class _ValidatorMetadata extends ValidatorAnnotation {
   String get defaultErrorMessage => 'defaultErrorMessage';
 
   @override
-  bool validate(dynamic value) => true;
+  bool isValid(dynamic value) => true;
 }
 
 void main() {
@@ -62,7 +62,7 @@ void main() {
     });
 
     test(
-        '_ValidatorMetadata validate function should implements validate function',
+        '''_ValidatorMetadata validate function should implements validate function''',
         () {
       expect(
         () => validatorMetadataToTest.validate(
@@ -73,7 +73,7 @@ void main() {
     });
 
     test(
-        '_ValidatorMetadata defaultErrorMessage should same with expectedDefaultErrorMessage ',
+        '''_ValidatorMetadata defaultErrorMessage should same with expectedDefaultErrorMessage ''',
         () {
       expect(
         validatorMetadataToTest.defaultErrorMessage,
@@ -82,7 +82,7 @@ void main() {
     });
 
     test(
-        'when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage',
+        '''when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage''',
         () {
       final validatorMetadataWithoutErrorMessage = _ValidatorMetadata();
       expect(
@@ -92,7 +92,7 @@ void main() {
     });
 
     test(
-        'when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage',
+        '''when error message not supplied in _ValidatorMetadata, should return defaultErrorMessage''',
         () {
       final validatorMetadataWithoutErrorMessage = _ValidatorMetadata();
       expect(

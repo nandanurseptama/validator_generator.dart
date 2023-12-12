@@ -1,9 +1,9 @@
 export 'is_alphabet_validator.dart';
+export 'is_email_validator.dart';
 export 'is_empty_string_validator.dart';
 export 'is_not_empty_string_validator.dart';
 export 'is_string_number_validator.dart';
 export 'is_string_validator.dart';
-export 'is_email_validator.dart';
 export 'max_string_length_validator.dart';
 export 'min_max_string_length_validator.dart';
 export 'min_string_length_validator.dart';

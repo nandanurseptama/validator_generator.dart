@@ -30,10 +30,19 @@ abstract class ValidatorAnnotation {
 
   /// implement this function to validate [value]
   ///
-  /// [value] is the value of instance or member of property where decorator placed
+  /// [value] is the value of instance
+  /// or member of property where decorator placed
   ///
   /// should return true if value is valid
-  bool validate(dynamic value);
+  bool isValid(dynamic value);
+
+  String? validate(dynamic value) {
+    final valid = isValid(value);
+    if (valid) {
+      return null;
+    }
+    return errorMessage;
+  }
 
   /// default error message when [errorMessage] value is null
   String get defaultErrorMessage;

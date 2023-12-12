@@ -7,7 +7,7 @@ void assertNumeric({
   }
   if (value is! num) {
     throw Exception(
-      "Expected value is a num but received a ${value.runtimeType}",
+      'Expected value is a num but received a ${value.runtimeType}',
     );
   }
   return;

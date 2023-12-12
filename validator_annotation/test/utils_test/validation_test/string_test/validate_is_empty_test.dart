@@ -1,25 +1,25 @@
-import 'package:validator_annotation/utils/validation/validation.dart';
 import 'package:test/test.dart';
+import 'package:validator_annotation/utils/validation/validation.dart';
 
 void main() {
-  var positiveTestCases = <String?>[
+  final positiveTestCases = <String?>[
     null,
-    "",
+    '',
   ];
 
-  var negativeTestCases = <String>["a", ";"];
+  final negativeTestCases = <String>['a', ';'];
 
-  var whitespaceTestCases = [
-    " ",
-    "\t",
+  final whitespaceTestCases = [
+    ' ',
+    '\t',
   ];
 
-  group("Validate is empty test", () {
+  group('Validate is empty test', () {
     test(
-      "when excluding white space is false, should only accept null or string empty",
+      '''when excluding white space is false, should only accept null or string empty''',
       () {
         for (var testCase in positiveTestCases) {
-          var result = validateIsEmpty(
+          final result = validateIsEmpty(
             excludeWhiteSpace: false,
             value: testCase,
           );
@@ -30,10 +30,9 @@ void main() {
         }
       },
     );
-    test("when excluding white space is true, accept white space too", () {
+    test('when excluding white space is true, accept white space too', () {
       for (var testCase in whitespaceTestCases) {
-        var result = validateIsEmpty(
-          excludeWhiteSpace: true,
+        final result = validateIsEmpty(
           value: testCase,
         );
         expect(
@@ -44,10 +43,10 @@ void main() {
     });
 
     test(
-      "when excluding white space is false, should only accept null or string empty",
+      '''when excluding white space is false, should only accept null or string empty''',
       () {
         for (var testCase in negativeTestCases) {
-          var result = validateIsEmpty(
+          final result = validateIsEmpty(
             excludeWhiteSpace: false,
             value: testCase,
           );

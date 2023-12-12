@@ -1,19 +1,19 @@
-import 'package:validator_annotation/utils/validation/string_validation/validate_string_length.dart';
 import 'package:test/test.dart';
+import 'package:validator_annotation/utils/validation/string_validation/validate_string_length.dart';
 
 void main() {
   late String positiveTestCase;
 
   setUpAll(() {
-    positiveTestCase = "nanda";
+    positiveTestCase = 'nanda';
   });
 
-  group("Validate string length test", () {
-    group("validate min length test", () {
+  group('Validate string length test', () {
+    group('validate min length test', () {
       test(
-        "when min length lower and equal to zero, should throw assertion error",
+        'when min length lower and equal to zero, should throw assertion error',
         () {
-          var length = 0;
+          const length = 0;
 
           expect(
             () => validateMinStringLength(
@@ -27,9 +27,9 @@ void main() {
         },
       );
       test(
-        "when positive test case length higher than and equal to min length, should return true",
+        '''when positive test case length higher than and equal to min length, should return true''',
         () {
-          var length = 5;
+          const length = 5;
           expect(
             validateMinStringLength(
               length: length,
@@ -41,9 +41,9 @@ void main() {
       );
 
       test(
-        "when positive test case length lower than min length, should return false",
+        '''when positive test case length lower than min length, should return false''',
         () {
-          var length = 8;
+          const length = 8;
 
           expect(
             validateMinStringLength(
@@ -56,7 +56,7 @@ void main() {
       );
     });
 
-    group("validate max length test", () {
+    group('validate max length test', () {
       late int positiveCaseMaxLength;
       late int negativeCaseMaxLength;
       setUp(() {
@@ -65,9 +65,9 @@ void main() {
       });
 
       test(
-        "when max length lower or equal to zero, should throws assertion error",
+        'when max length lower or equal to zero, should throws assertion error',
         () {
-          var length = 0;
+          const length = 0;
           expect(
             () => validateMaxStringLength(
               length: length,
@@ -81,7 +81,7 @@ void main() {
       );
 
       test(
-        "test case length lower or equal to maxLength, should return true",
+        'test case length lower or equal to maxLength, should return true',
         () {
           expect(
             validateMaxStringLength(
@@ -94,7 +94,7 @@ void main() {
       );
 
       test(
-        "test case length higher than maxLength, should return false",
+        'test case length higher than maxLength, should return false',
         () {
           expect(
             validateMaxStringLength(
@@ -107,9 +107,9 @@ void main() {
       );
     });
 
-    group("validate max min length test", () {
+    group('validate max min length test', () {
       test(
-        "When minLength or maxLength lower than or equal to zero, should throw assertion error",
+        '''When minLength or maxLength lower than or equal to zero, should throw assertion error''',
         () {
           expect(
               () => validateMinMaxStringLength(
@@ -119,12 +119,12 @@ void main() {
                   ),
               throwsA(
                 isA<Exception>(),
-              ));
+              ),);
         },
       );
 
       test(
-        "When minLength higher or equal to maxLength, should throw assertion error",
+        '''When minLength higher or equal to maxLength, should throw assertion error''',
         () {
           expect(
             () => validateMinMaxStringLength(
@@ -140,7 +140,7 @@ void main() {
       );
 
       test(
-          "when test case value length higher or equal to minLength and lower or equal to maxLength, should return true",
+          '''when test case value length higher or equal to minLength and lower or equal to maxLength, should return true''',
           () {
         expect(
           validateMinMaxStringLength(

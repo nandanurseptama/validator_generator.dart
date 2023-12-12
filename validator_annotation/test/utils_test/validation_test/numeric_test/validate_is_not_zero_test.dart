@@ -1,5 +1,5 @@
-import 'package:validator_annotation/utils/validation/numeric_validation/validate_is_not_zero.dart';
 import 'package:test/test.dart';
+import 'package:validator_annotation/utils/validation/numeric_validation/validate_is_not_zero.dart';
 
 void main() {
   group('validateIsNotZero', () {

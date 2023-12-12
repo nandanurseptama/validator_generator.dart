@@ -4,15 +4,15 @@ import 'package:validator_annotation/annotations/numeric_annotations/min_value_n
 import '../metadata_test_helper.dart';
 
 void main() {
-  const int minValue = 0;
-  const String expectedFieldName = "numOfChild";
-  const String expectedErrorMessage = "min value for num of child is $minValue";
-  const int lowerValue = -1;
-  const int higherValue = 2;
+  const minValue = 0;
+  const expectedFieldName = 'numOfChild';
+  const expectedErrorMessage = 'min value for num of child is $minValue';
+  const lowerValue = -1;
+  const higherValue = 2;
 
-  group("IsEmailValidator", () {
+  group('IsEmailValidator', () {
     testValidatorMetadataFieldName(
-      MinValueNumberValidator(
+      const MinValueNumberValidator(
         value: minValue,
         fieldName: expectedFieldName,
       ),
@@ -20,7 +20,7 @@ void main() {
     );
 
     testValidatorMetadataErrorMessage(
-      MinValueNumberValidator(
+      const MinValueNumberValidator(
         value: minValue,
         errorMessage: expectedErrorMessage,
       ),
@@ -28,51 +28,50 @@ void main() {
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: MinValueNumberValidator(
+      instance: const MinValueNumberValidator(
         value: minValue,
       ),
       expectedValidateResultValue: true,
       valueToValidate: minValue,
       description:
-          "When value is equal to minValue=$minValue, should be success validate and return true",
+          '''When value is equal to minValue=$minValue, should be success validate and return true''',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: MinValueNumberValidator(
+      instance: const MinValueNumberValidator(
         value: minValue,
       ),
       expectedValidateResultValue: true,
       valueToValidate: higherValue,
       description:
-          "When value is higher to minValue=$minValue, should be success validate and return true",
+          '''When value is higher to minValue=$minValue, should be success validate and return true''',
     );
 
     testValidatorMetadataSuccessValidate(
-      instance: MinValueNumberValidator(
+      instance: const MinValueNumberValidator(
         value: minValue,
         errorMessage: expectedErrorMessage,
       ),
       expectedValidateResultValue: false,
       valueToValidate: lowerValue,
       description:
-          "When value is lower than minValue=$minValue, should be success validate and return false",
+          '''When value is lower than minValue=$minValue, should be success validate and return false''',
       expectedErrorMessage: expectedErrorMessage,
     );
 
     testValidatorMetadataFailedValidate(
-      instance: MinValueNumberValidator(
+      instance: const MinValueNumberValidator(
         value: minValue,
       ),
-      description: "When value is null, should be throw exception",
-      valueToValidate: null,
+      description: '''When value is null, should be throw exception''',
     );
 
     testValidatorMetadataFailedValidate(
-      instance: MinValueNumberValidator(
+      instance: const MinValueNumberValidator(
         value: minValue,
       ),
-      description: "When value is not numeric, should be throw exception",
-      valueToValidate: "42",
+      description: '''When value is not numeric, should be throw exception''',
+      valueToValidate: '42',
     );
   });
 }
