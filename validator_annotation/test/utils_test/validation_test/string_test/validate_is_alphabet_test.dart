@@ -25,24 +25,29 @@ void main() {
         '''should return true for valid alphabets with newline when allowMultiline is true''',
         () {
       expect(
-          validateIsAlphabet(value: 'a\nb\nc'), isTrue,);
+        validateIsAlphabet(value: 'a\nb\nc'),
+        isTrue,
+      );
     });
 
     test(
         '''should return true for valid alphabets with mixed case when onlyAcceptLowerCase is false''',
         () {
       expect(
-          validateIsAlphabet(value: 'aBc'), isTrue,);
+        validateIsAlphabet(value: 'aBc'),
+        isTrue,
+      );
     });
 
     test(
         '''should return true for valid alphabets with mixed case and whitespace when trimWhiteSpace is true''',
         () {
       expect(
-          validateIsAlphabet(
-            value: 'a B c',
-          ),
-          isTrue,);
+        validateIsAlphabet(
+          value: 'a B c',
+        ),
+        isTrue,
+      );
     });
 
     test('should return false for invalid alphabets with numbers', () {
@@ -66,11 +71,12 @@ void main() {
         '''should return false for invalid alphabets with whitespace when trimWhiteSpace is false''',
         () {
       expect(
-          validateIsAlphabet(
-            value: 'a b c',
-            trimWhiteSpace: false,
-          ),
-          isFalse,);
+        validateIsAlphabet(
+          value: 'a b c',
+          trimWhiteSpace: false,
+        ),
+        isFalse,
+      );
     });
 
     test(

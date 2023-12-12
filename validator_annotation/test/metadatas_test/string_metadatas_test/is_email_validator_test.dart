@@ -25,7 +25,6 @@ void main() {
       valueToValidate: 'bard@gmail.com',
       description:
           '''When value is valid email, should be success validate and return true''',
-          
     );
 
     testValidatorMetadataSuccessValidate(

@@ -25,7 +25,7 @@ import '../../validator_annotation.dart';
 ///   [
 ///     IsNotEmptyStringValidator(errorMessage: 'Value is required.'),
 ///     MinStringLengthValidator(
-///       length: 5, 
+///       length: 5,
 ///       errorMessage: 'Must be at least 5 characters.',
 ///     ),
 ///   ],

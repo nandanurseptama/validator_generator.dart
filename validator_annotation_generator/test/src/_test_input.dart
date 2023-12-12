@@ -2,7 +2,7 @@ import 'package:source_gen_test/source_gen_test.dart';
 import 'package:validator_annotation/validator_annotation.dart';
 
 @ShouldThrow('`@ClassValidator` can only be used on classes.')
-@ClassValidator()
+@ClassValidator() // ignore: invalid_annotation_target
 const topLevelVariabel = 2;
 
 @ShouldThrow(

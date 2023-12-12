@@ -1,7 +1,7 @@
 import '../../utils/utils.dart';
 import '../annotations.dart';
 
-/// Validator metadata to check 
+/// Validator metadata to check
 /// if a number value between [minValue] and [maxValue]
 ///
 /// [minValue] <= `value` <= [maxValue] and [maxValue] > [minValue]

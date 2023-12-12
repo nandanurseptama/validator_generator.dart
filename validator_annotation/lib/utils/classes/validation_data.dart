@@ -16,7 +16,7 @@ class ValidationData extends Equatable {
   /// Creates an instance of [ValidationData].
   ///
   /// The [valueToValidate] is the value that needs to be validated,
-  /// and [annotations] is a list 
+  /// and [annotations] is a list
   /// of validator annotations associated with the value.
   ///
   /// Example:

@@ -112,14 +112,15 @@ void main() {
         '''When minLength or maxLength lower than or equal to zero, should throw assertion error''',
         () {
           expect(
-              () => validateMinMaxStringLength(
-                    minLength: 0,
-                    maxLength: 0,
-                    value: positiveTestCase,
-                  ),
-              throwsA(
-                isA<Exception>(),
-              ),);
+            () => validateMinMaxStringLength(
+              minLength: 0,
+              maxLength: 0,
+              value: positiveTestCase,
+            ),
+            throwsA(
+              isA<Exception>(),
+            ),
+          );
         },
       );
 

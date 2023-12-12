@@ -5,7 +5,7 @@ import '../annotations.dart';
 ///
 /// Check if an [String] instance is not empty
 ///
-/// [trimWhiteSpace] if true the 
+/// [trimWhiteSpace] if true the
 /// whitespace and tab will be replaced by empty string
 ///
 /// if value [Type] is not [String] it will throw an [Exception]

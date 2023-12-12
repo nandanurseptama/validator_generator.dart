@@ -6,8 +6,7 @@ import '../metadata_test_helper.dart';
 void main() {
   const expectedFieldName = 'userName';
   const expectedErrorMessage = 'userName length must be between 5 and 8';
-  const instanceToTest =
-      MinMaxStringLengthValidator(
+  const instanceToTest = MinMaxStringLengthValidator(
     fieldName: expectedFieldName,
     errorMessage: expectedErrorMessage,
     maxLength: 8,
@@ -99,7 +98,7 @@ void main() {
       description: 'when maxLength equal to zero, should throw exception',
     );
 
-    // invalid maxLength and minLength parameter. 
+    // invalid maxLength and minLength parameter.
     // maxLength should be higher than minLength
     testValidatorMetadataFailedValidate(
       instance: const MinMaxStringLengthValidator(
