@@ -4,7 +4,7 @@ import 'validate_is_empty.dart';
 
 /// check if the [value] is alphabet or not
 ///
-/// when [trimWhiteSpace] is true all 
+/// when [trimWhiteSpace] is true all
 /// whitespace will be replaced by string empty
 ///
 /// when [onlyAcceptLowerCase] is true only accept 'a-z' character

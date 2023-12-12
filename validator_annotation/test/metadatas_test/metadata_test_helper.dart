@@ -57,7 +57,7 @@ void testValidatorMetadataSuccessValidate({
         '''Validator metadata ${instance.runtimeType} function validate should return `$expectedValidateResultValue`, when value to validate has value=$valueToValidate and value type is ${valueToValidate.runtimeType}''',
     () {
       expect(
-        instance.validate(
+        instance.isValid(
           valueToValidate,
         ),
         expectedValidateResultValue,
@@ -88,7 +88,7 @@ void testValidatorMetadataFailedValidate({
           '''Validator metadata ${instance.runtimeType} function validate should throw Exception, when value to validate has value=$valueToValidate and value type is ${valueToValidate.runtimeType}''',
       () {
     expect(
-      () => instance.validate(valueToValidate),
+      () => instance.isValid(valueToValidate),
       throwsA(isA<Exception>()),
     );
   });

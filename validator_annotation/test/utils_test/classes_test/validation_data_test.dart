@@ -34,7 +34,7 @@ void main() {
         expectedSymbol,
         validationDataToTest.instanceMemberSymbol,
       );
-      expect(validationDataToTest.instanceMemberSymbol, isA<Symbol>());
+      expect(validationDataToTest.instanceMemberSymbol, isA<String>());
 
       expect(
         validationDataToTest.valueToValidate,

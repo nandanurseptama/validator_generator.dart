@@ -44,9 +44,10 @@ void main() {
       valueToValidate: 42,
     );
 
-    testValidatorMetadataFailedValidate(
+    testValidatorMetadataSuccessValidate(
       instance: const IsNotEmptyStringValidator(),
-      description: 'When value is null, should be throw exception',
+      expectedValidateResultValue: false,
+      expectedErrorMessage: 'is empty',
     );
   });
 }
