@@ -5,13 +5,11 @@ sdk:
 
 stages:
 - analyze_format:
-  - group:
-    - format
-    - analyze: --fatal-infos .
-    sdk: dev
-  - group:
-    - analyze
-    sdk: pubspec
+  - analyze: --fatal-infos .
+  - format:
+    sdk:
+    - dev
+
 - unit_test:
   - group:
       - test
