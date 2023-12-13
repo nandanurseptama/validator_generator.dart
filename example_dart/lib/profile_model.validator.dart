@@ -9,8 +9,8 @@ part of 'profile_model.dart';
 class ProfileModelValidator {
   static String? validateFullName(String value) {
     final validatorAnnotations = [
-      IsNotEmptyStringValidator(),
-      MaxStringLengthValidator(length: 64)
+      const IsNotEmptyStringValidator(),
+      const MaxStringLengthValidator(length: 64)
     ];
     return validateField(
       value,
@@ -25,14 +25,14 @@ class ProfileModelValidator {
         instanceMemberSymbol: 'fullName',
         valueToValidate: instance.fullName,
         annotations: [
-          IsNotEmptyStringValidator(),
-          MaxStringLengthValidator(length: 64)
+          const IsNotEmptyStringValidator(),
+          const MaxStringLengthValidator(length: 64)
         ],
       )
     ];
 
     // validator options
-    final stopWhenFirstError = true;
+    const stopWhenFirstError = true;
     return validateInstance(
       validationDatas,
       stopWhenFirstError: stopWhenFirstError,

@@ -45,23 +45,5 @@ void main() {
         expectedOriginalValue,
       );
     });
-
-    test('instances ValidationError with difference property should not match',
-        () {
-      final validationErrorMatcher = ValidationError(
-        fieldName: 'salary',
-        originalValue: -10,
-        errorMessage: 'Salary must be higher than zero',
-      );
-
-      expect(
-        validationErrorMatcher.props == validationErrorToTest.props,
-        isFalse,
-      );
-      expect(
-        validationErrorMatcher == validationErrorToTest,
-        isFalse,
-      );
-    });
   });
 }

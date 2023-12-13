@@ -1,5 +1,5 @@
 import 'package:validator_annotation/validator_annotation.dart';
-import 'package:validator_annotation_example_dart/base_model.dart';
+import 'package:example_dart/base_model.dart';
 
 part 'profile_model.validator.dart';
 

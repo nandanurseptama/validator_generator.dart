@@ -24,16 +24,6 @@ ElementAnnotation? getElementAnnotationFromElement({
     if (!isEnclosingElementClassValidatorType) {
       continue;
     }
-    // final metadataEnclosingElement = metadataElement.enclosingElement;
-    // print('getElementAnnotationFromElement $metadataEnclosingElement');
-    // if (metadataEnclosingElement == null) {
-    //   continue;
-    // }
-    // final isClassValidatorType =
-    //     TypeChecker.fromRuntime(type).isExactly(metadataEnclosingElement);
-    // if (!isClassValidatorType) {
-    //   continue;
-    // }
     return metadata;
   }
   return null;

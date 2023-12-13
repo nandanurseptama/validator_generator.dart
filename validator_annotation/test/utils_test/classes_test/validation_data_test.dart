@@ -62,23 +62,5 @@ void main() {
       );
     });
 
-    group('equality test', () {
-      test('validation data with difference property should not same', () {
-        const matcherInstance = ValidationData(
-          instanceMemberSymbol: 'child',
-          valueToValidate: 1,
-          annotations: [
-            MinValueNumberValidator(
-              value: 0,
-            ),
-          ],
-        );
-        expect(matcherInstance == validationDataToTest, isFalse);
-        expect(
-          matcherInstance.props == validationDataToTest.props,
-          isFalse,
-        );
-      });
     });
-  });
 }

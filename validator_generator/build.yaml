@@ -1,0 +1,17 @@
+# Read about `build.yaml` at https://pub.dev/packages/build_config
+
+targets:
+  $default:
+    builders:
+      validator_generator:
+        generate_for:
+        - example/*
+        
+builders:
+  validator_generator:
+    import: "package:validator_generator/builder.dart"
+    builder_factories: ["validatorBuilder"]
+    build_extensions: {".dart": [".validator_generator.validator.dart"]}
+    auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen|combining_builder"]

@@ -1,4 +1,4 @@
-name: validator_annotation_generator
+name: validator_generator
 description: A starting point for Dart libraries or applications.
 version: 1.0.0-alpha
 publish_to: none
@@ -17,6 +17,7 @@ topics:
 dependencies:
   analyzer: ^6.3.0
   build: ^2.4.1
+  build_config: ^1.1.1
   source_gen: ^1.4.0
   validator_annotation:
     path: ../validator_annotation

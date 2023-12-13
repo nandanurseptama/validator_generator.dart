@@ -3,7 +3,7 @@
 ///
 /// also it will generate each field validator function (static function)
 /// that annotate with [ValidatorAnnotation]
-library validator_annotation_generator;
+library validator_generator;
 
 import 'package:validator_annotation/validator_annotation.dart';
 

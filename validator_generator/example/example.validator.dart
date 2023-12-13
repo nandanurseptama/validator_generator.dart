@@ -1,6 +1,8 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_model.dart';
+// ignore_for_file: non_constant_identifier_names
+
+part of 'example.dart';
 
 // **************************************************************************
 // ValidatorModelGenerator
@@ -9,8 +11,8 @@ part of 'user_model.dart';
 class UserModelValidator {
   static String? validate_email(String value) {
     final validatorAnnotations = [
-      IsNotEmptyStringValidator(),
-      IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
+      const IsNotEmptyStringValidator(),
+      const IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
     ];
     return validateField(
       value,
@@ -19,7 +21,7 @@ class UserModelValidator {
   }
 
   static String? validate_password(String value) {
-    final validatorAnnotations = [IsNotEmptyStringValidator()];
+    final validatorAnnotations = [const IsNotEmptyStringValidator()];
     return validateField(
       value,
       validatorAnnotations,
@@ -33,19 +35,20 @@ class UserModelValidator {
         instanceMemberSymbol: 'email',
         valueToValidate: instance.email,
         annotations: [
-          IsNotEmptyStringValidator(),
-          IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
+          const IsNotEmptyStringValidator(),
+          const IsEmailValidator(
+              fieldName: 'email', errorMessage: 'is not email')
         ],
       ),
       ValidationData(
         instanceMemberSymbol: 'password',
         valueToValidate: instance.password,
-        annotations: [IsNotEmptyStringValidator()],
+        annotations: [const IsNotEmptyStringValidator()],
       )
     ];
 
     // validator options
-    final stopWhenFirstError = false;
+    const stopWhenFirstError = false;
     return validateInstance(
       validationDatas,
       stopWhenFirstError: stopWhenFirstError,

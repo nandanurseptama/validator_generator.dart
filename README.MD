@@ -2,9 +2,9 @@
 
 Provides [Dart Build System] builders for generating validator class.
 
-## validator_annotation_generator
+## validator_generator
 
-- [Source code](validator_annotation_generator)
+- [Source code](validator_generator)
 
 The core package providing Generators for ClassValidator-specific tasks.
 

@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class ValidationError extends Equatable {
+class ValidationError{
   final String fieldName;
   final dynamic originalValue;
   final String errorMessage;
@@ -11,10 +9,4 @@ class ValidationError extends Equatable {
     required this.errorMessage,
   });
 
-  @override
-  List<Object?> get props => [
-        fieldName,
-        originalValue,
-        errorMessage,
-      ];
 }
