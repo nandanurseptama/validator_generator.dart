@@ -11,13 +11,11 @@ const topLevelVariabel = 2;
 @ClassValidator()
 class ProfileModel {}
 
-@ShouldGenerate(
-  '''
-class UserModelValidator {
-  static String? validateEmail(String value) {
+@ShouldGenerate('''class UserModelValidator {
+  static String? validate_email(String value) {
     final validatorAnnotations = [
-      IsNotEmptyStringValidator(),
-      IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
+      const IsNotEmptyStringValidator(),
+      const IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
     ];
     return validateField(
       value,
@@ -25,8 +23,8 @@ class UserModelValidator {
     );
   }
 
-  static String? validatePassword(String value) {
-    final validatorAnnotations = [IsNotEmptyStringValidator()];
+  static String? validate_password(String value) {
+    final validatorAnnotations = [const IsNotEmptyStringValidator()];
     return validateField(
       value,
       validatorAnnotations,
@@ -40,29 +38,30 @@ class UserModelValidator {
         instanceMemberSymbol: 'email',
         valueToValidate: instance.email,
         annotations: [
-          IsNotEmptyStringValidator(),
-          IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
+          const IsNotEmptyStringValidator(),
+          const IsEmailValidator(
+              fieldName: 'email', errorMessage: 'is not email')
         ],
       ),
       ValidationData(
         instanceMemberSymbol: 'password',
         valueToValidate: instance.password,
-        annotations: [IsNotEmptyStringValidator()],
+        annotations: [const IsNotEmptyStringValidator()],
       )
     ];
 
     // validator options
-    final stopWhenFirstError = false;
+    const stopWhenFirstError = false;
     return validateInstance(
       validationDatas,
       stopWhenFirstError: stopWhenFirstError,
     );
   }
 }
-''',
-)
+''')
 @ClassValidator(
   stopWhenFirstError: false,
+  namingConvention: NamingConvention.snackCase,
 )
 class UserModel {
   @IsNotEmptyStringValidator()
@@ -76,78 +75,6 @@ class UserModel {
   final String password;
 
   const UserModel({
-    required this.email,
-    required this.password,
-  });
-}
-
-@ShouldGenerate(
-  '''
-class UserModelWithSnackCaseNamingConventionValidator {
-  static String? validate_email(String value) {
-    final validatorAnnotations = [
-      IsNotEmptyStringValidator(),
-      IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
-    ];
-    return validateField(
-      value,
-      validatorAnnotations,
-    );
-  }
-
-  static String? validate_password(String value) {
-    final validatorAnnotations = [IsNotEmptyStringValidator()];
-    return validateField(
-      value,
-      validatorAnnotations,
-    );
-  }
-
-  static ValidationResult validate(
-      UserModelWithSnackCaseNamingConvention instance) {
-    // validation data
-    final validationDatas = [
-      ValidationData(
-        instanceMemberSymbol: 'email',
-        valueToValidate: instance.email,
-        annotations: [
-          IsNotEmptyStringValidator(),
-          IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
-        ],
-      ),
-      ValidationData(
-        instanceMemberSymbol: 'password',
-        valueToValidate: instance.password,
-        annotations: [IsNotEmptyStringValidator()],
-      )
-    ];
-
-    // validator options
-    final stopWhenFirstError = false;
-    return validateInstance(
-      validationDatas,
-      stopWhenFirstError: stopWhenFirstError,
-    );
-  }
-}
-''',
-)
-@ClassValidator(
-  stopWhenFirstError: false,
-  namingConvention: NamingConvention.snackCase,
-)
-class UserModelWithSnackCaseNamingConvention {
-  @IsNotEmptyStringValidator()
-  @IsEmailValidator(
-    fieldName: 'email',
-    errorMessage: 'is not email',
-  )
-  final String email;
-
-  @IsNotEmptyStringValidator()
-  final String password;
-
-  const UserModelWithSnackCaseNamingConvention({
     required this.email,
     required this.password,
   });
