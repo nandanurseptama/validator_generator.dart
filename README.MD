@@ -1,4 +1,4 @@
-[![Dart CI](https://github.com/nandanurseptama/validator_generator.dart/actions/workflows/dart.yml/badge.svg?branch=master)](https://github.com/nandanurseptama/validator_generator.dart/actions/workflows/dart.yml)
+[![Dart CI](https://github.com/nandanurseptama/validator_generator.dart/actions/workflows/dart.yml/badge.svg)](https://github.com/nandanurseptama/validator_generator.dart/actions/workflows/dart.yml)
 
 Provides [Dart Build System] builders for generating validator class.
 
