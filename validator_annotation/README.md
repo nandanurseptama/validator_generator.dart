@@ -157,4 +157,4 @@ class UserModelValidator {
 }
 ```
 
-[`validator_generator`] : https://pub.dev/packages/validator_generator
+[`validator_generator`]: https://pub.dev/packages/validator_generator
