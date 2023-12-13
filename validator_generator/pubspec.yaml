@@ -2,8 +2,13 @@ name: validator_generator
 description: Automatically generate code for creating validator class annotating Dart classes.
 repository: https://github.com/nandanurseptama/validator_generator.dart/tree/master/validator_generator
 version: 1.0.0-alpha
-publish_to: none
-
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
 environment:
   sdk: ^3.0.0
 
@@ -19,8 +24,7 @@ dependencies:
   build: ^2.4.1
   build_config: ^1.1.1
   source_gen: ^1.4.0
-  validator_annotation:
-    path: ../validator_annotation
+  validator_annotation: ^1.0.0-alpha
   # path: ^1.8.0
 
 dev_dependencies:
