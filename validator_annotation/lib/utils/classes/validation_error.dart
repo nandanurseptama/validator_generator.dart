@@ -1,4 +1,4 @@
-class ValidationError{
+class ValidationError {
   final String fieldName;
   final dynamic originalValue;
   final String errorMessage;
@@ -8,5 +8,4 @@ class ValidationError{
     required this.originalValue,
     required this.errorMessage,
   });
-
 }
