@@ -1,60 +1,29 @@
 [![Pub Package](https://img.shields.io/pub/v/validator_generator.svg)](https://pub.dev/packages/validator_generator)
 
-Defines annotations that will be used by packaged [`validator_generator`] to build class validator.
+Provides [Dart Build System] builders for create validator class.
 
-# Annotation Values
+The builders generate validator class when they find class annotated with [`ClassValidator`].
 
-## Class
+To generate validator class, you need to :
 
-```dart
-ClassValidator // Annotation in class level
-```
+- Annotate class with [`ClassValidator`]. You can provide arguments to [`ClassValidator`] to
+  configure the generated code.
 
-## Field Member
+- Annotate each field that you want to be validate with one or more annotation. You can check supported annotation for field [Here].
 
-### String
+## Setup
 
-These are example supported annotation for string member :
-
-```dart
-IsStringValidator
-IsNotEmptyStringValidator
-IsEmptyStringValidator
-MinStringLengthValidator
-MaxStringLengthValidator
-```
-
-[More](lib/annotations/string_annotations/string_metadatas.dart)
-
-### Numeric
-
-These are example supported annotation for numeric member :
-
-```dart
-IsZeroValidator
-IsNegativeNumberValidator
-IsPostiveNumberValidator
-```
-
-[More](lib/annotations/numeric_annotations/numeric_metadatas.dart)
-
-# Usages
-
-## Install
-
-```bash
-dart pub get validator_annotation
-dart pub get --dev validator_generator
-```
+To configure your project for the latest released version of `validator_generator`, see the [example].
 
 ## Example
 
-Define a class, let say `UserModel` with file name `user_model.dart`. Then annotated `UserModel` with `ClassValidator`:
+Given a library `example.dart` with an `UserModel` class annotated with
+[`ClassValidator`]:
 
 ```dart
 import 'package:validator_annotation/validator_annotation.dart';
 
-part 'user_model.validator.dart';
+part 'example.validator.dart';
 
 @ClassValidator(
   // Stop validating the rest of instance members.
@@ -87,22 +56,16 @@ class UserModel {
     required this.password,
   });
 }
+
 ```
-
-Run `validator_generator` to generate validator class
-
-```bash
-dart pub run build_runner build
-```
-
-The `validator_generator` creates the corresponding part `user_model.validator.dart`:
+Building creates the corresponding part `example.validator.dart`:
 
 ```dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // ignore_for_file: non_constant_identifier_names
 
-part of 'user_model.dart';
+part of 'example.dart';
 
 // **************************************************************************
 // ValidatorModelGenerator
@@ -157,4 +120,50 @@ class UserModelValidator {
 }
 ```
 
-[`validator_generator`]: https://pub.dev/packages/validator_generator
+# Running the code generator
+
+Once you have added the annotations to your code you then need to run the code
+generator to generate the missing `.validator.dart` generated dart files.
+
+Run `dart run build_runner build` in the package directory.
+
+# Annotation Values
+
+## Class
+
+```dart
+ClassValidator // Annotation in class level
+```
+
+## Field Member
+
+### String
+
+These are example supported annotation for string member :
+
+```dart
+IsStringValidator
+IsNotEmptyStringValidator
+IsEmptyStringValidator
+MinStringLengthValidator
+MaxStringLengthValidator
+```
+
+[More](../validator_annotation/lib/annotations/string_annotations/string_metadatas.dart)
+
+### Numeric
+
+These are example supported annotation for numeric member :
+
+```dart
+IsZeroValidator
+IsNegativeNumberValidator
+IsPostiveNumberValidator
+```
+
+[More](../validator_annotation/lib/annotations/string_annotations/string_metadatas.dart)
+
+
+[example]: https://github.com/nandanurseptama/validator_generator.dart/tree/master/example_dart
+[Here]: (../validator_annotation/lib/annotations/annotations.dart)
+[`ClassValidator`]: https://pub.dev/packages/validator_annotation

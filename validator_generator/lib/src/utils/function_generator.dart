@@ -16,7 +16,8 @@ String createStaticFunctionValidatorFromFieldNameAndMetadatas({
     fieldName,
     namingConvention,
   );
-  final annotationSources = validatorAnnotations.join(',\n');
+  final annotationSources =
+      validatorAnnotations.map((e) => 'const $e').join(',\n');
   final annotations = '''[\n$annotationSources];''';
   return '''
   static String? $functionName(String value){
@@ -48,7 +49,7 @@ String createStaticFunctionValidatorFromInstance({
     final validationDatas = $validationDationDataString
     
     // validator options
-    final stopWhenFirstError = ${config.stopWhenFirstError};
+    const stopWhenFirstError = ${config.stopWhenFirstError};
     return validateInstance(validationDatas, stopWhenFirstError:stopWhenFirstError,);
   }
   ''';
@@ -59,7 +60,8 @@ String createValidationDataSourceString({
   required String fieldName,
   required List<String> validatorAnnotations,
 }) {
-  final annotationSources = validatorAnnotations.join(',\n');
+  final annotationSources =
+      validatorAnnotations.map((e) => 'const $e').join(',\n');
   final annotations = '''[\n$annotationSources]''';
   final validationDataSource = '''
  ValidationData(

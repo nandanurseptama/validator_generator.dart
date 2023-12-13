@@ -1,5 +1,6 @@
 name: validator_annotation
 description: A validator annotation for class. It will make easier for you to validate your model or DTO.
+repository: https://github.com/nandanurseptama/validator_generator.dart/tree/master/validator_annotation
 version: 1.0.0-alpha
 platforms:
   android:
@@ -20,7 +21,6 @@ topics:
 
 # Add regular dependencies here.
 dependencies:
-  equatable: ^2.0.5
   meta: ^1.9.1
 
 dev_dependencies:

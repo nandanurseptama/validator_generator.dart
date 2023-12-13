@@ -39,16 +39,16 @@ jobs:
       - name: mono_repo self validate
         run: dart pub global run mono_repo generate --validate
   job_002:
-    name: "analyzer_format; linux; Dart 3.0.0; PKG: validator_annotation_generator; `dart analyze`"
+    name: "analyzer_format; linux; Dart 3.0.0; PKG: validator_generator; `dart analyze`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_annotation_generator;commands:analyze_1"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_generator;commands:analyze_1"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_annotation_generator
+            os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_generator
             os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -59,28 +59,28 @@ jobs:
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
-      - id: validator_annotation_generator_pub_upgrade
-        name: validator_annotation_generator; dart pub upgrade
+      - id: validator_generator_pub_upgrade
+        name: validator_generator; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: validator_annotation_generator
-      - name: validator_annotation_generator; dart analyze
+        working-directory: validator_generator
+      - name: validator_generator; dart analyze
         run: dart analyze
-        if: "always() && steps.validator_annotation_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: validator_annotation_generator
+        if: "always() && steps.validator_generator_pub_upgrade.conclusion == 'success'"
+        working-directory: validator_generator
     needs:
       - job_001
   job_003:
-    name: "analyzer_format; linux; Dart dev; PKG: validator_annotation_generator; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
+    name: "analyzer_format; linux; Dart dev; PKG: validator_generator; `dart format --output=none --set-exit-if-changed .`, `dart analyze --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_annotation_generator;commands:format-analyze_0"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_generator;commands:format-analyze_0"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_annotation_generator
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_generator
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -91,19 +91,19 @@ jobs:
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
-      - id: validator_annotation_generator_pub_upgrade
-        name: validator_annotation_generator; dart pub upgrade
+      - id: validator_generator_pub_upgrade
+        name: validator_generator; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: validator_annotation_generator
-      - name: "validator_annotation_generator; dart format --output=none --set-exit-if-changed ."
+        working-directory: validator_generator
+      - name: "validator_generator; dart format --output=none --set-exit-if-changed ."
         run: "dart format --output=none --set-exit-if-changed ."
-        if: "always() && steps.validator_annotation_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: validator_annotation_generator
-      - name: "validator_annotation_generator; dart analyze --fatal-infos ."
+        if: "always() && steps.validator_generator_pub_upgrade.conclusion == 'success'"
+        working-directory: validator_generator
+      - name: "validator_generator; dart analyze --fatal-infos ."
         run: dart analyze --fatal-infos .
-        if: "always() && steps.validator_annotation_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: validator_annotation_generator
+        if: "always() && steps.validator_generator_pub_upgrade.conclusion == 'success'"
+        working-directory: validator_generator
     needs:
       - job_001
   job_004:
@@ -179,16 +179,16 @@ jobs:
       - job_002
       - job_003
   job_006:
-    name: "unit_test; linux; Dart 3.0.0; PKGS: validator_annotation, validator_annotation_generator; `dart test`"
+    name: "unit_test; linux; Dart 3.0.0; PKGS: validator_annotation, validator_generator; `dart test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_annotation-validator_annotation_generator;commands:test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_annotation-validator_generator;commands:test"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_annotation-validator_annotation_generator
+            os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0;packages:validator_annotation-validator_generator
             os:ubuntu-latest;pub-cache-hosted;sdk:3.0.0
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -208,15 +208,15 @@ jobs:
         run: dart test
         if: "always() && steps.validator_annotation_pub_upgrade.conclusion == 'success'"
         working-directory: validator_annotation
-      - id: validator_annotation_generator_pub_upgrade
-        name: validator_annotation_generator; dart pub upgrade
+      - id: validator_generator_pub_upgrade
+        name: validator_generator; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: validator_annotation_generator
-      - name: validator_annotation_generator; dart test
+        working-directory: validator_generator
+      - name: validator_generator; dart test
         run: dart test
-        if: "always() && steps.validator_annotation_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: validator_annotation_generator
+        if: "always() && steps.validator_generator_pub_upgrade.conclusion == 'success'"
+        working-directory: validator_generator
     needs:
       - job_001
       - job_002
@@ -224,16 +224,16 @@ jobs:
       - job_004
       - job_005
   job_007:
-    name: "unit_test; linux; Dart dev; PKGS: validator_annotation, validator_annotation_generator; `dart test`"
+    name: "unit_test; linux; Dart dev; PKGS: validator_annotation, validator_generator; `dart test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_annotation-validator_annotation_generator;commands:test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_annotation-validator_generator;commands:test"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_annotation-validator_annotation_generator
+            os:ubuntu-latest;pub-cache-hosted;sdk:dev;packages:validator_annotation-validator_generator
             os:ubuntu-latest;pub-cache-hosted;sdk:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -253,15 +253,15 @@ jobs:
         run: dart test
         if: "always() && steps.validator_annotation_pub_upgrade.conclusion == 'success'"
         working-directory: validator_annotation
-      - id: validator_annotation_generator_pub_upgrade
-        name: validator_annotation_generator; dart pub upgrade
+      - id: validator_generator_pub_upgrade
+        name: validator_generator; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: validator_annotation_generator
-      - name: validator_annotation_generator; dart test
+        working-directory: validator_generator
+      - name: validator_generator; dart test
         run: dart test
-        if: "always() && steps.validator_annotation_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: validator_annotation_generator
+        if: "always() && steps.validator_generator_pub_upgrade.conclusion == 'success'"
+        working-directory: validator_generator
     needs:
       - job_001
       - job_002
@@ -269,7 +269,7 @@ jobs:
       - job_004
       - job_005
   job_008:
-    name: "unit_test; windows; Dart 3.0.0; PKGS: validator_annotation, validator_annotation_generator; `dart test`"
+    name: "unit_test; windows; Dart 3.0.0; PKGS: validator_annotation, validator_generator; `dart test`"
     runs-on: windows-latest
     steps:
       - name: Setup Dart SDK
@@ -288,15 +288,15 @@ jobs:
         run: dart test
         if: "always() && steps.validator_annotation_pub_upgrade.conclusion == 'success'"
         working-directory: validator_annotation
-      - id: validator_annotation_generator_pub_upgrade
-        name: validator_annotation_generator; dart pub upgrade
+      - id: validator_generator_pub_upgrade
+        name: validator_generator; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: validator_annotation_generator
-      - name: validator_annotation_generator; dart test
+        working-directory: validator_generator
+      - name: validator_generator; dart test
         run: dart test
-        if: "always() && steps.validator_annotation_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: validator_annotation_generator
+        if: "always() && steps.validator_generator_pub_upgrade.conclusion == 'success'"
+        working-directory: validator_generator
     needs:
       - job_001
       - job_002
@@ -304,7 +304,7 @@ jobs:
       - job_004
       - job_005
   job_009:
-    name: "unit_test; windows; Dart dev; PKGS: validator_annotation, validator_annotation_generator; `dart test`"
+    name: "unit_test; windows; Dart dev; PKGS: validator_annotation, validator_generator; `dart test`"
     runs-on: windows-latest
     steps:
       - name: Setup Dart SDK
@@ -323,15 +323,15 @@ jobs:
         run: dart test
         if: "always() && steps.validator_annotation_pub_upgrade.conclusion == 'success'"
         working-directory: validator_annotation
-      - id: validator_annotation_generator_pub_upgrade
-        name: validator_annotation_generator; dart pub upgrade
+      - id: validator_generator_pub_upgrade
+        name: validator_generator; dart pub upgrade
         run: dart pub upgrade
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: validator_annotation_generator
-      - name: validator_annotation_generator; dart test
+        working-directory: validator_generator
+      - name: validator_generator; dart test
         run: dart test
-        if: "always() && steps.validator_annotation_generator_pub_upgrade.conclusion == 'success'"
-        working-directory: validator_annotation_generator
+        if: "always() && steps.validator_generator_pub_upgrade.conclusion == 'success'"
+        working-directory: validator_generator
     needs:
       - job_001
       - job_002

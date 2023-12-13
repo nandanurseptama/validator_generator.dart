@@ -1,9 +1,8 @@
-import 'package:equatable/equatable.dart';
 import '../../annotations/annotations.dart';
 
 /// Represents data used for validation, including the value to be validated
 /// and a list of validator annotation.
-class ValidationData extends Equatable {
+class ValidationData {
   /// property or method of instance symbol
   final String instanceMemberSymbol;
 
@@ -31,12 +30,4 @@ class ValidationData extends Equatable {
     required this.valueToValidate,
     required this.annotations,
   });
-
-  /// Overrides the Equatable props list for equality comparison.
-  @override
-  List<Object?> get props => [
-        instanceMemberSymbol,
-        valueToValidate,
-        annotations,
-      ];
 }
