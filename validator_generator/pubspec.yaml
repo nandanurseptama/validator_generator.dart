@@ -1,8 +1,8 @@
 name: validator_generator
-description: A starting point for Dart libraries or applications.
+description: Automatically generate code for creating validator class annotating Dart classes.
+repository: https://github.com/nandanurseptama/validator_generator.dart/tree/master/validator_generator
 version: 1.0.0-alpha
 publish_to: none
-# repository: https://github.com/my_org/my_repo
 
 environment:
   sdk: ^3.0.0
@@ -30,3 +30,7 @@ dev_dependencies:
   path: ^1.9.0
   source_gen_test: ^1.0.6
   test: ^1.21.0
+
+# dependency_overrides:
+#   validator_annotation:
+#     path: ../validator_annotation/

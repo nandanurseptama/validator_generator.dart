@@ -129,6 +129,41 @@ Run `dart run build_runner build` in the package directory.
 
 # Annotation Values
 
+## Class
+
+```dart
+ClassValidator // Annotation in class level
+```
+
+## Field Member
+
+### String
+
+These are example supported annotation for string member :
+
+```dart
+IsStringValidator
+IsNotEmptyStringValidator
+IsEmptyStringValidator
+MinStringLengthValidator
+MaxStringLengthValidator
+```
+
+[More](../validator_annotation/lib/annotations/string_annotations/string_metadatas.dart)
+
+### Numeric
+
+These are example supported annotation for numeric member :
+
+```dart
+IsZeroValidator
+IsNegativeNumberValidator
+IsPostiveNumberValidator
+```
+
+[More](../validator_annotation/lib/annotations/string_annotations/string_metadatas.dart)
+
+
 [example]: https://github.com/nandanurseptama/validator_generator.dart/tree/master/example_dart
 [Here]: (../validator_annotation/lib/annotations/annotations.dart)
 [`ClassValidator`]: https://pub.dev/packages/validator_annotation
