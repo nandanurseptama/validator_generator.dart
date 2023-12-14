@@ -1,3 +1,4 @@
+import '../../utils/functions/convert_to_num.dart';
 import '../../utils/utils.dart';
 import '../annotations.dart';
 
@@ -19,15 +20,9 @@ class IsNegativeNumberValidator extends ValidatorAnnotation {
   ///
   /// throw an exception when `value` is not [num]
   @override
-  bool isValid(dynamic value) {
-    assertNumeric(
-      value: value,
-    );
-    value as num;
-    return validateIsNegative(
-      value,
-    );
-  }
+  bool isValid(dynamic value) => validateIsNegative(
+        convertToNum(value),
+      );
 }
 
 /// shortcut for [IsNegativeNumberValidator]

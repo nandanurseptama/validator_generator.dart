@@ -1,3 +1,4 @@
+import '../../utils/functions/convert_to_num.dart';
 import '../../utils/utils.dart';
 import '../annotations.dart';
 
@@ -13,21 +14,15 @@ class IsZeroValidator extends ValidatorAnnotation {
         );
 
   @override
-  String get defaultErrorMessage => 'must be positive';
+  String get defaultErrorMessage => 'must be zero';
 
   /// return `true` if value is zero
   ///
   /// throw an exception when `value` is not [num]
   @override
-  bool isValid(dynamic value) {
-    assertNumeric(
-      value: value,
-    );
-    value as num;
-    return !validateIsNotZero(
-      value,
-    );
-  }
+  bool isValid(dynamic value) => !validateIsNotZero(
+        convertToNum(value),
+      );
 }
 
 /// shortcut for [IsZeroValidator]

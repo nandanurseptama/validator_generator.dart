@@ -1,4 +1,5 @@
 import '../../validator_annotation.dart';
+import '../utils.dart';
 
 /// Validates a field using a list of [ValidatorAnnotation] annotations.
 ///
@@ -43,9 +44,13 @@ String? validateField(
     return null;
   }
   for (final annotation in annotations) {
-    final error = annotation.validate(value);
-    if (error != null) {
-      return error;
+    try {
+      final error = annotation.validate(value);
+      if (error != null) {
+        return error;
+      }
+    } catch (error) {
+      return (error as Exception).formattedMessage;
     }
   }
   return null;

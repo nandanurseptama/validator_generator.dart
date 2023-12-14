@@ -1,3 +1,4 @@
+import '../../utils/functions/convert_to_num.dart';
 import '../../utils/utils.dart';
 import '../annotations.dart';
 
@@ -19,14 +20,10 @@ class MaxValueNumberValidator extends ValidatorAnnotation {
 
   /// throw an exception when `value` is not [num]
   @override
-  bool isValid(dynamic value) {
-    assertNumeric(
-      value: value,
-    );
-    value as num;
-    return validateMaxValue(
-      value: value,
-      maxValue: this.value,
-    );
-  }
+  bool isValid(dynamic value) => validateMaxValue(
+        value: convertToNum(
+          value,
+        ),
+        maxValue: this.value,
+      );
 }

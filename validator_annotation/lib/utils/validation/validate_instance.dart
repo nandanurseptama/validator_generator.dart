@@ -1,4 +1,4 @@
-import '../../validator_annotation.dart';
+import '../utils.dart';
 
 ValidationResult validateInstance(
   List<ValidationData> validationDatas, {
@@ -10,7 +10,13 @@ ValidationResult validateInstance(
   for (final validationData in validationDatas) {
     final valueToValidate = validationData.valueToValidate;
     for (final validationMetadata in validationData.annotations) {
-      final error = validationMetadata.validate(valueToValidate);
+      String? error;
+      try {
+        error = validationMetadata.validate(valueToValidate);
+      } catch (e) {
+        error = (e as Exception).formattedMessage;
+      }
+
       final isError = error != null;
       if (isError && stopWhenFirstError) {
         final validationError = ValidationError(

@@ -54,10 +54,12 @@ void main() {
       description: 'When value is null, should be throw exception',
     );
 
-    testValidatorMetadataFailedValidate(
+    testValidatorMetadataSuccessValidate(
       instance: const IsNegativeNumberValidator(),
       description: 'When value is not numeric, should be throw exception',
       valueToValidate: '42',
+      expectedErrorMessage: 'must be negative',
+      expectedValidateResultValue: false,
     );
   });
 }
