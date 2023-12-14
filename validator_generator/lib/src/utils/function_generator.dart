@@ -20,7 +20,7 @@ String createStaticFunctionValidatorFromFieldNameAndMetadatas({
       validatorAnnotations.map((e) => 'const $e').join(',\n');
   final annotations = '''[\n$annotationSources];''';
   return '''
-  static String? $functionName(String value){
+  static String? $functionName(dynamic value){
     final validatorAnnotations = $annotations
     return validateField(value, validatorAnnotations,);
   }
