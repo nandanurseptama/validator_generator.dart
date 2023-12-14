@@ -66,12 +66,14 @@ void main() {
       description: '''When value is null, should be throw exception''',
     );
 
-    testValidatorMetadataFailedValidate(
+    testValidatorMetadataSuccessValidate(
       instance: const MaxValueNumberValidator(
         value: maxValue,
       ),
       description: '''When value is not numeric, should be throw exception''',
       valueToValidate: '42',
+      expectedValidateResultValue: false,
+      expectedErrorMessage: 'must lower than or equal to $maxValue',
     );
   });
 }

@@ -31,9 +31,16 @@ void assertNullableString({
   dynamic value,
   bool allowNullable = false,
 }) {
+  if (!allowNullable && value == null) {
+    throw Exception(
+      'Expected value type is non-nullable String',
+    );
+  }
+
   if (allowNullable && value == null) {
     return;
   }
+
   if (value is String) {
     return;
   }

@@ -99,13 +99,15 @@ void main() {
       description: '''When value is null, should be throw exception''',
     );
 
-    testValidatorMetadataFailedValidate(
+    testValidatorMetadataSuccessValidate(
       instance: const MinMaxValueNumberValidator(
         minValue: minValue,
         maxValue: maxValue,
       ),
       description: '''When value is not numeric, should be throw exception''',
       valueToValidate: '42',
+      expectedValidateResultValue: false,
+      expectedErrorMessage: 'value must be between $minValue and $maxValue',
     );
   });
 }

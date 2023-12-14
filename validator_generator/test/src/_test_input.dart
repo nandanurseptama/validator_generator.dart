@@ -12,7 +12,7 @@ const topLevelVariabel = 2;
 class ProfileModel {}
 
 @ShouldGenerate('''class UserModelValidator {
-  static String? validate_email(String value) {
+  static String? validate_email(dynamic value) {
     final validatorAnnotations = [
       const IsNotEmptyStringValidator(),
       const IsEmailValidator(fieldName: 'email', errorMessage: 'is not email')
@@ -23,7 +23,7 @@ class ProfileModel {}
     );
   }
 
-  static String? validate_password(String value) {
+  static String? validate_password(dynamic value) {
     final validatorAnnotations = [const IsNotEmptyStringValidator()];
     return validateField(
       value,

@@ -1,3 +1,4 @@
+import '../../utils/functions/convert_to_num.dart';
 import '../../utils/utils.dart';
 import '../annotations.dart';
 
@@ -19,14 +20,8 @@ class MinValueNumberValidator extends ValidatorAnnotation {
 
   /// throw an exception when `value` is not [num]
   @override
-  bool isValid(dynamic value) {
-    assertNumeric(
-      value: value,
-    );
-    value as num;
-    return validateMinValue(
-      value: value,
-      minValue: this.value,
-    );
-  }
+  bool isValid(dynamic value) => validateMinValue(
+        value: convertToNum(value),
+        minValue: this.value,
+      );
 }

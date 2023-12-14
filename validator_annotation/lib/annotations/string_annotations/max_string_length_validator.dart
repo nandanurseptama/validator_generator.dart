@@ -5,13 +5,9 @@ import '../annotations.dart';
 ///
 /// [length] have to higher than zero
 ///
-/// return `false` if `length` lower or equal to zero
+/// [String] is valid if `value.length` <= `length`
 ///
-/// return `false` if value is [String]
-///
-/// return `true` if `value.length` <= `length`
-///
-/// return `false` if `value.length` > `length
+/// [String] is invalid if `value.length` > `length
 ///
 /// if value [Type] is not [String] it will throw an [Exception]
 ///
